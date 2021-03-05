@@ -13,11 +13,7 @@ require("dotenv").config();
 // Getting middlewares
 const middlewares = require("./middlewares");
 
-<<<<<<< HEAD
 //Getting api
-=======
-// Getting api
->>>>>>> 408c56a6f4208d9dd40885d85321f248b17db0ca
 const users = require("./api/Users");
 
 // app config
@@ -42,7 +38,6 @@ app.get("/", (req, res) => {
   res.send({ start: "backend" });
 });
 
-<<<<<<< HEAD
 //api routes for other pages
 app.get("/api/users", users);
 
@@ -57,10 +52,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./api/authenticationRoutes")(app);
-=======
-// api route for Other Pages
-app.use("/api/users", users);
->>>>>>> 408c56a6f4208d9dd40885d85321f248b17db0ca
 
 //middlewares
 app.use(middlewares.notFound);
