@@ -17,10 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^6.0.0",
-<<<<<<< HEAD
     "dotenv": "^8.2.0",
-=======
->>>>>>> 288e2c7ccfe1d3f1cae668585e00c7c52d024367
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.18"
