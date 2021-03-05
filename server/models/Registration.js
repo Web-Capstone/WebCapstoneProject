@@ -1,5 +1,5 @@
-const Mongoose = require("mongoose");
-const Schema = Mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const requiredString = {
   type: String,
@@ -13,5 +13,5 @@ const RegistrationSchema = new Schema({
   Password: requiredString,
 });
 
-const Registration = Mongoose.model("Registration", RegistrationSchema); // model gives us methods like find,create
+const Registration = mongoose.model("useregisters", RegistrationSchema); // model gives us methods like find,create
 module.exports = Registration;
