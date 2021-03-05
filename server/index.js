@@ -7,12 +7,16 @@ const passport = require("passport");
 //Environment Variables
 require("dotenv").config();
 
+// Getting middlewares
 const middlewares = require("./middlewares");
+
+// Getting api
+const users = require("./api/Users");
 
 // app config
 const app = express();
 
-//connect to mongoose
+//Connect to mongoose
 const OPTS = {
   useCreateIndex: true,
   useNewUrlParser: true,
@@ -24,10 +28,13 @@ Mongoose.connect(process.env.DATABASE_URL, OPTS)
 
 app.use(express.json());
 
-// api routes
+// api routes for Home Page
 app.get("/", (req, res) => {
   res.send({ start: "backend" });
 });
+
+// api route for Other Pages
+app.get("/api/users", users);
 
 //middlewares
 app.use(middlewares.notFound);
