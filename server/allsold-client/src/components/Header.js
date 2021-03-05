@@ -2,29 +2,43 @@ import React from "react";
 import {
   AppBar,
   Toolbar,
-  IconButton,
   Typography,
   InputBase,
   CssBaseline,
+  Button,
+  createMuiTheme,
+  ThemeProvider,
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#6ac099",
+    },
+  },
+});
+
 const useStyles = makeStyles((theme) => ({
-  root: {
+  grow: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+
   title: {
-    flexGrow: 1,
     display: "none",
+    marginLeft: theme.spacing(5),
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
   },
+
+  buttonGoogle: {
+    backgroundColor: "black",
+    color: "white",
+    marginRight: "10px",
+  },
+
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -32,10 +46,11 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
+    marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
+      marginLeft: theme.spacing(150),
       width: "auto",
     },
   },
@@ -57,11 +72,8 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
 }));
@@ -69,36 +81,45 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+    <div className={classes.grow}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppBar position="static">
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Material-UI
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
+            <div className={classes.grow} />
+            <Button
+              href="/auth/google"
+              variant="contained"
+              className={classes.buttonGoogle}
+            >
+              Login with Google
+            </Button>
+            <Button
+              href="/auth/google"
+              variant="contained"
+              className={classes.buttonLogin}
+            >
+              Login
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </ThemeProvider>
     </div>
   );
 }
