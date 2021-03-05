@@ -1,5 +1,8 @@
 const express = require("express");
 const Mongoose = require("mongoose");
+const keys = require("./configuration/keys");
+const sessionCookie = require("cookie-session");
+const passport = require("passport");
 
 //Environment Variables
 require("dotenv").config();
