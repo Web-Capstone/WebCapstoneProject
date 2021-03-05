@@ -104,7 +104,7 @@ function Header() {
             </div>
             <div className={classes.grow} />
             <Button
-              href="/auth/google"
+              href="/oauth20/google"
               variant="contained"
               className={classes.buttonGoogle}
             >

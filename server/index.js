@@ -4,6 +4,9 @@ const keys = require("./configuration/keys");
 const sessionCookie = require("cookie-session");
 const passport = require("passport");
 
+require("./models/GoogleUser");
+require("./api/passport");
+
 //Environment Variables
 require("dotenv").config();
 
@@ -50,5 +53,5 @@ app.use(middlewares.errorHandler);
 // port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Listening at http://localhost:${port} \n Server up and running`);
+  console.log(`Listening at http://localhost:${PORT} \n Server up and running`);
 });
