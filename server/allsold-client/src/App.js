@@ -1,9 +1,20 @@
 import React from "react";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import { Container } from "@material-ui/core";
 
 function App() {
   return (
     <div>
-      <h1>Start of project</h1>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Container maxwidth="md">
+            <Route path="/" exact component={Home} />
+          </Container>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
