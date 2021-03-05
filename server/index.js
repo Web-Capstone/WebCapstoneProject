@@ -41,6 +41,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+require("./api/authenticationRoutes")(app);
+
 //middlewares
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
