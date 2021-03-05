@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import EmailIcon from "@material-ui/icons/Email";
 import Button from "@material-ui/core/Button";
 import "../styles/Register.css";
 import Footer from "./Footer";
@@ -31,7 +33,7 @@ const Register = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <EmailIcon />
               </InputAdornment>
             ),
           }}
@@ -80,7 +82,7 @@ const Register = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <VpnKeyIcon />
               </InputAdornment>
             ),
           }}
