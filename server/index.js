@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 });
 
 //api routes for other pages
-app.get("/api/users", users);
+app.use("/api/users", users);
 
 app.use(
   sessionCookie({

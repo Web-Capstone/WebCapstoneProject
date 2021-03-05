@@ -111,11 +111,11 @@ function Header() {
               Login with Google
             </Button>
             <Button
-              href="/auth/google"
+              href="/Register"
               variant="contained"
               className={classes.buttonLogin}
             >
-              Login
+              Register
             </Button>
           </Toolbar>
         </AppBar>

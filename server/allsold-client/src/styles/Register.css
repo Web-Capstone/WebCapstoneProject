@@ -1,0 +1,29 @@
+#root {
+  background-color: #f8f1f1;
+}
+
+.registerForm {
+  margin-top: 3%;
+  text-align: center;
+  min-width: 70ch;
+  padding: 50px;
+  display: block;
+}
+
+.registerForm label {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.registerForm Button {
+  display: block;
+  padding: 10px;
+  margin-left: 25%;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.registerForm .newAccount {
+  background-color: #1d8b5a;
+  margin-top: 20px;
+}
