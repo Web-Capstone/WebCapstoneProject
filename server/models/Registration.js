@@ -13,5 +13,5 @@ const RegistrationSchema = new Schema({
   Password: requiredString,
 });
 
-const Registration = Mongoose.model("Registration", RegistrationSchema); // model gives us methods like find,create
+const Registration = Mongoose.model("useregisters", RegistrationSchema); // model gives us methods like find,create
 module.exports = Registration;

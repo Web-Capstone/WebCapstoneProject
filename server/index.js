@@ -12,6 +12,9 @@ require("dotenv").config();
 
 const middlewares = require("./middlewares");
 
+//Getting api
+const users = require("./api/Users");
+
 // app config
 const app = express();
 
@@ -33,6 +36,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send({ start: "backend" });
 });
+
+//api routes for other pages
+app.get("/api/users", users);
 
 app.use(
   sessionCookie({
