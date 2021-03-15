@@ -11,6 +11,8 @@ import {
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -78,8 +80,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
+function Header(props) {
   const classes = useStyles();
+  const toggleHeader = () => {
+    switch (props.googleAuthReducer) {
+      case null:
+        return;
+      case false:
+        return (
+          <Button
+            href="/oauth20/google"
+            variant="contained"
+            className={classes.buttonGoogle}
+          >
+            Login with Google
+          </Button>
+        );
+      default:
+        return (
+          <Button
+            href="/api/logout"
+            variant="contained"
+            className={classes.buttonGoogle}
+          >
+            Logout
+          </Button>
+        );
+    }
+  };
   return (
     <div className={classes.grow}>
       <ThemeProvider theme={theme}>
@@ -103,13 +131,9 @@ function Header() {
               />
             </div>
             <div className={classes.grow} />
-            <Button
-              href="/oauth20/google"
-              variant="contained"
-              className={classes.buttonGoogle}
-            >
-              Login with Google
-            </Button>
+
+            {toggleHeader()}
+
             <Button
               href="/Register"
               variant="contained"
@@ -124,4 +148,8 @@ function Header() {
   );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return { googleAuthReducer: state.googleAuthReducer };
+};
+
+export default connect(mapStateToProps)(Header);
