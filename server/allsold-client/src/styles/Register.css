@@ -25,3 +25,13 @@
   background-color: #1d8b5a;
   margin-top: 20px;
 }
+
+.registerForm .loginGoogle{
+  background-color: #1d8b5a;
+  color:white;
+  display: block;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+}

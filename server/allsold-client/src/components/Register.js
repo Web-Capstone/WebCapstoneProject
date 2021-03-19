@@ -29,7 +29,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(registerUser(formData, history));
   };
 
@@ -112,9 +111,7 @@ const Login = () => {
             ),
           }}
         />
-        <Button variant="contained" color="primary" type="submit">
-          Login
-        </Button>
+        
 
         <Button
           className="register"
@@ -122,7 +119,7 @@ const Login = () => {
           color="primary"
           type="submit"
         >
-          Dont have account? Sign UP
+          Sign UP
         </Button>
       </form>
     </>

@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
   try {
     const existingUser = await Registration.findOne({ email });
     if (!existingUser)
-      return res.status(404).json({ msg: "User Doesnt exist" });
+      return res.status(404).send({ msg: "User Doesn't exist" });
 
     const isPasswordCorrect = await becrypt.compare(
       password,
@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
     );
 
     if (!isPasswordCorrect)
-      return res.status(400).json({ msg: "Invalid Creditianls" });
+      return res.status(400).send({ msg: "Invalid Creditianls ! Try Again" });
 
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
 
     res.status(201).json({ result: existingUser, token });
   } catch (error) {
-    res.status(500).json({ msg: "SOmeting went wrong" });
+    res.status(500).json({ msg: "Someting went wrong" });
   }
 });
 

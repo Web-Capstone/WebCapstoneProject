@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -11,8 +11,10 @@ import {
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import {logoutUser} from "../actions/index";
+import { useHistory } from "react-router";
 
 const theme = createMuiTheme({
   palette: {
@@ -35,11 +37,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  buttonGoogle: {
-    backgroundColor: "black",
-    color: "white",
-    marginRight: "10px",
-  },
 
   search: {
     position: "relative",
@@ -82,32 +79,21 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles();
-  const toggleHeader = () => {
-    switch (props.googleAuthReducer) {
-      case null:
-        return;
-      case false:
-        return (
-          <Button
-            href="/oauth20/google"
-            variant="contained"
-            className={classes.buttonGoogle}
-          >
-            Login with Google
-          </Button>
-        );
-      default:
-        return (
-          <Button
-            href="/api/logout"
-            variant="contained"
-            className={classes.buttonGoogle}
-          >
-            Logout
-          </Button>
-        );
-    }
-  };
+  const dispatch = useDispatch();
+  const history = useHistory();
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const handleLogout = () =>{
+    dispatch(logoutUser(history));
+    //setUser(null);
+  }
+
+  // useEffect(() => {
+  //   const token = user?.token;
+  //   setUser(JSON.parse(localStorage.getItem('profile')));
+  // })
+
+
   return (
     <div className={classes.grow}>
       <ThemeProvider theme={theme}>
@@ -132,15 +118,22 @@ function Header(props) {
             </div>
             <div className={classes.grow} />
 
-            {toggleHeader()}
-
-            <Button
+            {!localStorage.getItem('profile') && !props.googleAuthReducer ? <Button
               href="/Login"
               variant="contained"
               className={classes.buttonLogin}
             >
               Login
-            </Button>
+            </Button> : <Button
+            href="/api/logout"
+            variant="contained"
+            className={classes.buttonGoogle}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button> }
+ 
+            
           </Toolbar>
         </AppBar>
       </ThemeProvider>
