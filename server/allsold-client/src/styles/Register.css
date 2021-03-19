@@ -1,6 +1,4 @@
-#root {
-  background-color: #f8f1f1;
-}
+
 
 .registerForm {
   margin-top: 3%;
@@ -23,7 +21,7 @@
   font-size: 16px;
 }
 
-.registerForm .newAccount {
+.registerForm .register {
   background-color: #1d8b5a;
   margin-top: 20px;
 }

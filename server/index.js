@@ -3,6 +3,7 @@ const Mongoose = require("mongoose");
 const keys = require("./configuration/keys");
 const sessionCookie = require("cookie-session");
 const passport = require("passport");
+const cors = require("cors"); // For Cross Origin
 
 require("./models/GoogleUser");
 require("./api/passport");
@@ -31,6 +32,11 @@ Mongoose.connect(process.env.DATABASE_URL, OPTS)
 
 Mongoose.connect(keys.mongoURI);
 
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
 app.use(express.json());
 
 // api routes for Home Page

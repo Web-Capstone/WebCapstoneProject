@@ -2,8 +2,12 @@ const express = require("express");
 const Registration = require("../models/Registration");
 const router = express.Router();
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const becrypt = require("bcryptjs");
+const middlewares = require("../middlewares"); 
 mongoose.set("useFindAndModify", false);
 
+// shows all the users
 router.get("/", async (req, res, next) => {
   try {
     const allUsers = await Registration.find();
@@ -13,6 +17,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//shows a specific user
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   try {
@@ -23,38 +28,73 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", (req, res) => {
-  const { FirstName, LastName, Email, Password } = req.body;
+// Login user
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const existingUser = await Registration.findOne({ email });
+    if (!existingUser)
+      return res.status(404).json({ msg: "User Doesnt exist" });
+
+    const isPasswordCorrect = await becrypt.compare(
+      password,
+      existingUser.password
+    );
+
+    if (!isPasswordCorrect)
+      return res.status(400).json({ msg: "Invalid Creditianls" });
+
+    const token = jwt.sign(
+      { email: existingUser.email, id: existingUser._id },
+      process.env.token,
+      { expiresIn: "1h" }
+    );
+
+    res.status(201).json({ result: existingUser, token });
+  } catch (error) {
+    res.status(500).json({ msg: "SOmeting went wrong" });
+  }
+});
+
+// register user
+router.post("/register", async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
 
   // Validating all the required fields
-  if (!FirstName || !LastName || !Email || !Password) {
+  if (!firstName || !lastName || !email || !password) {
     return res.status(400).json({ msg: "Please Enter all the values" });
   }
 
-  Registration.findOne({ Email }).then((user) => {
-    if (user) return res.status(400).json({ msg: "User Already Exists" });
-    const newUser = new Registration({
-      FirstName,
-      LastName,
-      Email,
-      Password,
+  try {
+    const existingUser = await Registration.findOne({ email });
+
+    if (existingUser)
+      return res.status(404).json({ msg: "User already exist" });
+
+    const hashedPassword = await becrypt.hash(password, 12);
+
+    const result = await Registration.create({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
     });
-    newUser
-      .save()
-      .then((user) => {
-        res.json({
-          user: {
-            FirstName,
-            LastName,
-            Email,
-            Password,
-          },
-        });
-      })
-      .catch((err) => {
-        res.status(400).send("Update not possible");
-      });
-  });
+
+    const token = jwt.sign(
+      { email: result.email, id: result._id },
+      process.env.token,
+      { expiresIn: "1h" }
+    );
+
+    res.status(201).json({ result, token });
+  } catch (error) {
+    res.status(500).json({ msg: "SOmeting went wrong" });
+    console.log(error);
+  }
 });
+
+// route to get posts => use middlware.auth
+
 
 module.exports = router;

@@ -135,11 +135,11 @@ function Header(props) {
             {toggleHeader()}
 
             <Button
-              href="/Register"
+              href="/Login"
               variant="contained"
               className={classes.buttonLogin}
             >
-              Register
+              Login
             </Button>
           </Toolbar>
         </AppBar>

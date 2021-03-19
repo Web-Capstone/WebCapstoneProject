@@ -7,10 +7,10 @@ const requiredString = {
 };
 
 const RegistrationSchema = new Schema({
-  FirstName: requiredString,
-  LastName: requiredString,
-  Email: { type: String, required: true, unique: true },
-  Password: requiredString,
+  firstName: requiredString,
+  lastName: requiredString,
+  email: { type: String, required: true, unique: true, sparse: true },
+  password: requiredString,
 });
 
 const Registration = mongoose.model("useregisters", RegistrationSchema); // model gives us methods like find,create

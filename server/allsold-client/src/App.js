@@ -3,10 +3,11 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import { Container } from "@material-ui/core";
-import Register from "./components/Register";
+import Login from "./components/Login";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "./actions";
+import Register from "./components/Register.js";
 
 function App(props) {
   useEffect(() => {
@@ -16,13 +17,12 @@ function App(props) {
   return (
     <div>
       <BrowserRouter>
-        <div>
-          <Header />
-          <Container maxwidth="md">
-            <Route path="/" exact component={Home} />
-            <Route path="/Register" component={Register} />
-          </Container>
-        </div>
+        <Header />
+        <Container maxwidth="md">
+          <Route path="/Login" component={Login} />
+          <Route path="/Register" component={Register} />
+          <Route path="/" exact component={Home} />
+        </Container>
       </BrowserRouter>
     </div>
   );
