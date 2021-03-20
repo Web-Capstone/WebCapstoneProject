@@ -1,12 +1,14 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Container } from "@material-ui/core";
 
 function Home() {
   return (
     <div>
-      <Typography variant="h2" align="center">
-        Start of the home page
-      </Typography>
+      <Container maxwidth="md">
+        <Typography variant="h2" align="center">
+          Start of the home page
+        </Typography>
+      </Container>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "./actions";
 import Register from "./components/Register.js";
+import Drawer from "./components/Drawer";
 
 function App(props) {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App(props) {
     <div>
       <BrowserRouter>
         <Header />
+        <Drawer />
         <Container maxwidth="md">
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />

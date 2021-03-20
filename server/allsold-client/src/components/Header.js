@@ -3,17 +3,23 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  InputBase,
   CssBaseline,
   Button,
   createMuiTheme,
   ThemeProvider,
+  IconButton,
+  Drawer as AppDrawer,
+  List,
+  ListItem,
+  ListItemText,
+  ClickAwayListener,
 } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
+
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {logoutUser} from "../actions/index";
+import { logoutUser } from "../actions/index";
 import { useHistory } from "react-router";
 
 const theme = createMuiTheme({
@@ -25,55 +31,17 @@ const theme = createMuiTheme({
 });
 
 const useStyles = makeStyles((theme) => ({
-  grow: {
+  root: {
     flexGrow: 1,
   },
-
-  title: {
-    display: "none",
-    marginLeft: theme.spacing(5),
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-
-
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
+  menuButton: {
     marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(150),
-      width: "auto",
-    },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+  title: {
+    flexGrow: 1,
   },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
+  drawer: {
+    width: 250,
   },
 }));
 
@@ -81,59 +49,89 @@ function Header(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const itemList = [
+    {
+      text: "Item A",
+    },
+    {
+      text: "Item B",
+    },
+    {
+      text: "Item C",
+    },
+    {
+      text: "Item D",
+    },
+  ];
+
+  const [open, setOpen] = useState(false);
+  const handleClickAway = () => {
+    setOpen(false);
+  };
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     dispatch(logoutUser(history));
     //setUser(null);
-  }
+  };
 
   // useEffect(() => {
   //   const token = user?.token;
   //   setUser(JSON.parse(localStorage.getItem('profile')));
   // })
 
-
   return (
-    <div className={classes.grow}>
+    <div className={classes.root}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+
+        <AppDrawer open={open}>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <List className={classes.drawer}>
+              {itemList.map((item, index) => {
+                const { text } = item;
+                return (
+                  <ListItem button key={text}>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </ClickAwayListener>
+        </AppDrawer>
+
         <AppBar position="static">
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Material-UI
-            </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
-            </div>
-            <div className={classes.grow} />
-
-            {!localStorage.getItem('profile') && !props.googleAuthReducer ? <Button
-              href="/Login"
-              variant="contained"
-              className={classes.buttonLogin}
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setOpen(true)}
             >
-              Login
-            </Button> : <Button
-            href="/api/logout"
-            variant="contained"
-            className={classes.buttonGoogle}
-            onClick={handleLogout}
-          >
-            Logout
-          </Button> }
- 
-            
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              AllSold
+            </Typography>
+            {!localStorage.getItem("profile") && !props.googleAuthReducer ? (
+              <Button
+                href="/Login"
+                variant="contained"
+                className={classes.buttonLogin}
+              >
+                Login
+              </Button>
+            ) : (
+              <Button
+                href="/api/logout"
+                variant="contained"
+                className={classes.buttonGoogle}
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </ThemeProvider>
