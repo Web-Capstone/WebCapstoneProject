@@ -10,6 +10,7 @@ import "../styles/Register.css";
 import { loginUser, fetchGoogleUser } from "../actions/index";
 import { connect, useDispatch } from "react-redux";
 import Footer from "./Footer";
+import { Container } from "@material-ui/core";
 import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3),
     width: "75ch",
   },
-
 }));
 
 const initialState = { email: "", firstName: "", lastName: "", password: "" };
@@ -28,7 +28,6 @@ const Login = (props) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialState);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData, history));
@@ -38,9 +37,8 @@ const Login = (props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
   return (
-    <>
+    <Container maxwidth="md">
       <form className="registerForm" onSubmit={handleSubmit}>
         <TextField
           className={classes.margin}
@@ -93,17 +91,17 @@ const Login = (props) => {
         >
           Dont have account? Sign UP
         </Button>
-        
+
         <Button
-            href="/oauth20/google"
-            variant="contained"
-            className="loginGoogle"
-            // onClick={handleGoogleLogin}
-          >
-            Login with Google
-          </Button>
+          href="/oauth20/google"
+          variant="contained"
+          className="loginGoogle"
+          // onClick={handleGoogleLogin}
+        >
+          Login with Google
+        </Button>
       </form>
-    </>
+    </Container>
   );
 };
 

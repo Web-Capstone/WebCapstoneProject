@@ -6,11 +6,12 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import EmailIcon from "@material-ui/icons/Email";
 import Button from "@material-ui/core/Button";
-import "../styles/Register.css";
+import { Container } from "@material-ui/core";
 import { loginUser, registerUser } from "../actions/index";
 import { connect, useDispatch } from "react-redux";
 import Footer from "./Footer";
 import { useHistory } from "react-router";
+import "../styles/Register.css";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -36,7 +37,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   return (
-    <>
+    <Container maxwidth="md">
       <form className="registerForm" onSubmit={handleSubmit}>
         <TextField
           className={classes.margin}
@@ -58,40 +59,40 @@ const Login = () => {
         />
 
         <TextField
-              className={classes.margin}
-              id="input-with-icon-textfield outlined"
-              label="firstName"
-              name="firstName"
-              variant="outlined"
-              color="#440a67"
-              required="true"
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircle />
-                  </InputAdornment>
-                ),
-              }}
-            />
-    
+          className={classes.margin}
+          id="input-with-icon-textfield outlined"
+          label="firstName"
+          name="firstName"
+          variant="outlined"
+          color="#440a67"
+          required="true"
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+        />
+
         <TextField
-              className={classes.margin}
-              id="input-with-icon-textfield outlined"
-              label="lastName"
-              name="lastName"
-              variant="outlined"
-              color="#440a67"
-              required="true"
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircle />
-                  </InputAdornment>
-                ),
-              }}
-            />
+          className={classes.margin}
+          id="input-with-icon-textfield outlined"
+          label="lastName"
+          name="lastName"
+          variant="outlined"
+          color="#440a67"
+          required="true"
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+        />
 
         <TextField
           className={classes.margin}
@@ -111,7 +112,6 @@ const Login = () => {
             ),
           }}
         />
-        
 
         <Button
           className="register"
@@ -122,9 +122,8 @@ const Login = () => {
           Sign UP
         </Button>
       </form>
-    </>
+    </Container>
   );
 };
 
 export default Login;
-
