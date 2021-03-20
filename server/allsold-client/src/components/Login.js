@@ -96,7 +96,6 @@ const Login = (props) => {
           href="/oauth20/google"
           variant="contained"
           className="loginGoogle"
-          // onClick={handleGoogleLogin}
         >
           Login with Google
         </Button>

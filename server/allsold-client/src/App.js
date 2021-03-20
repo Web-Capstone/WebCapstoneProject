@@ -12,6 +12,8 @@ import "fontsource-roboto";
 function App(props) {
   useEffect(() => {
     props.fetchGoogleUser();
+    props.loginUser();
+    props.registerUser();
   }, []);
 
   return (
