@@ -11,6 +11,8 @@ import Register from "./components/Register.js";
 function App(props) {
   useEffect(() => {
     props.fetchGoogleUser();
+    props.loginUser();
+    props.registerUser();
   }, []);
 
   return (
