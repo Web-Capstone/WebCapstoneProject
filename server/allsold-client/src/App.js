@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "./actions";
 import Register from "./components/Register.js";
-import "fontsource-roboto";
 
 function App(props) {
   useEffect(() => {
