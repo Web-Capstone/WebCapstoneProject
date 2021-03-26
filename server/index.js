@@ -14,11 +14,12 @@ require("dotenv").config();
 // Getting middlewares
 const middlewares = require("./middlewares");
 
-//Getting api
-const users = require("./api/Users");
-
 // app config
 const app = express();
+
+//Getting api
+const users = require("./api/Users");
+const products = require("./api/Products");
 
 //Connect to mongoose
 const OPTS = {
@@ -46,6 +47,7 @@ app.get("/", (req, res) => {
 
 //api routes for other pages
 app.use("/api/users", users);
+app.use("/api/products", products);
 
 app.use(
   sessionCookie({

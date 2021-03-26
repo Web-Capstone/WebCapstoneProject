@@ -4,7 +4,6 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const becrypt = require("bcryptjs");
-const middlewares = require("../middlewares"); 
 mongoose.set("useFindAndModify", false);
 
 // shows all the users
@@ -95,6 +94,4 @@ router.post("/register", async (req, res) => {
 });
 
 // route to get posts => use middlware.auth
-
-
 module.exports = router;
