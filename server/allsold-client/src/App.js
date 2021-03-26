@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import * as actions from "./actions";
 import Register from "./components/Register.js";
 import Products from "./components/Products";
+import "./App.css";
 
 function App(props) {
   useEffect(() => {

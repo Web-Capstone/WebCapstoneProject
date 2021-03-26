@@ -1,0 +1,42 @@
+.products {
+  display: flex;
+  height: 100vh;
+}
+
+.products_section {
+  flex: 0.15;
+  padding: 10px;
+}
+
+.products_section_categories,
+.products_section_services,
+.products_section_filter {
+  margin-left: 30px;
+  margin-top: 20px;
+  border-bottom: 3px solid whitesmoke;
+}
+
+.products_section_services {
+  margin-top: 15px;
+  border-bottom: 0px;
+}
+
+.section_sortBy {
+  padding-left: 30px;
+  color: gray;
+  font-weight: bolder;
+}
+
+.MuiFormLabel-root {
+  font-weight: bolder;
+  color: rgb(36, 34, 34);
+}
+
+/* .MuiRadio-colorSecondary.Mui-checked {
+  color: #6ac099 im !important;
+} */
+
+.products_main {
+  flex: 1;
+  height: 100vh;
+}
