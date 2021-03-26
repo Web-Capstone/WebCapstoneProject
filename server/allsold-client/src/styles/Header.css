@@ -1,0 +1,6 @@
+.logo {
+  object-fit: contain !important;
+  height: 130px;
+  width: 130px;
+  display: flexs;
+}

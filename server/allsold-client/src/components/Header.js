@@ -16,11 +16,13 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { fade, makeStyles } from "@material-ui/core/styles";
-
+import Logo from "../images/Allsold_logo.jpeg";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../actions/index";
 import { useHistory } from "react-router";
+
+import "../styles/Header.css";
 
 const theme = createMuiTheme({
   palette: {
@@ -114,6 +116,7 @@ function Header(props) {
             <Typography variant="h6" className={classes.title}>
               AllSold
             </Typography>
+            {/* <img src={Logo} alt="logo" className="logo" /> */}
             {!localStorage.getItem("profile") && !props.googleAuthReducer ? (
               <Button
                 href="/Login"
