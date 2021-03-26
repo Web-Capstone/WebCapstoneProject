@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "./actions";
 import Register from "./components/Register.js";
+import Products from "./components/Products";
 
 function App(props) {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App(props) {
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <Route path="/" exact component={Home} />
+        <Route path="/products" component={Products} />
         {/* </Container> */}
       </BrowserRouter>
     </div>

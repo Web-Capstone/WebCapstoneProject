@@ -25,7 +25,7 @@ import { useHistory } from "react-router";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#ffffff",
+      main: "#6ac099",
     },
   },
 });
