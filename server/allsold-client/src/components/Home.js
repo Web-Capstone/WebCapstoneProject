@@ -18,6 +18,7 @@ import StarIcon from "@material-ui/icons/StarBorder";
 // import purple from "@material-ui/core/colors/purple";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import Footer from "./Footer";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -343,6 +344,7 @@ function Home() {
             ))}
           </Grid>
         </Container>
+        <Footer />
       </ThemeProvider>
     </div>
   );
