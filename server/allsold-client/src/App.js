@@ -34,6 +34,7 @@ function App(props) {
         <Route path="/products" component={Products} />
         <Route path="/productDetails" component={ProductDetails} />
         <Route path="/" exact component={Home} />
+
         {/* </Container> */}
       </BrowserRouter>
     </div>
