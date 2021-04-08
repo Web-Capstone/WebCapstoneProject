@@ -1,14 +1,15 @@
 import React from "react";
-import { Typography, Container } from "@material-ui/core";
-import bannerImage from "../images/HomeBanner.png";
+import {
+  Typography,
+  Container,
+  Grid,
+  CardMedia,
+  Card,
+  CardContent,
+  CardActions,
+} from "@material-ui/core";
 import "../styles/home.css";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import DirectionsIcon from "@material-ui/icons/Directions";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
@@ -57,7 +58,28 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "30px",
     maxWidth: "100px",
   },
+  productContainer: {
+    padding: "20px 0",
+  },
+  productTitle: {
+    fontWeight: 800,
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  card: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  cardMedia: {
+    paddingTop: "56.25%",
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
 }));
+
+const cards = [1, 2, 3, 4, 5, 6];
 
 function Home() {
   const classes = useStyles();
@@ -83,6 +105,43 @@ function Home() {
             </Button>
           </Box>
         </Box>
+
+        <Container maxwidth="lg" className={classes.productContainer}>
+          <Typography
+            variant="h3"
+            className={classes.productTitle}
+            align="center"
+          >
+            Latest Products at Glance
+          </Typography>
+          <Grid container spacing={4}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg?cs=srgb&dl=pexels-mohi-syed-47261.jpg&fm=jpg"
+                    title="image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5">
+                      Product Name
+                    </Typography>
+                    <Typography>Product Description of the product</Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    <Button size="small" color="secondary">
+                      Favorite
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </ThemeProvider>
     </div>
   );
