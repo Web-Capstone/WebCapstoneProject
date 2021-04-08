@@ -13,7 +13,7 @@ export const loginUser = (formData, history) => async (dispatch) => {
     const { data } = await api.login(formData);
     dispatch({ type: AUTH, data });
     history.push("/");
-    //window.location.reload();
+    window.location.reload();
   } catch (error) {
     console.log(error);
   }

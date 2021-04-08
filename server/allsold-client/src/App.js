@@ -13,8 +13,6 @@ import "./App.css";
 function App(props) {
   useEffect(() => {
     props.fetchGoogleUser();
-    props.loginUser();
-    props.registerUser();
   }, []);
 
   return (
@@ -24,8 +22,8 @@ function App(props) {
         {/* <Container maxwidth="md"> */}
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
-        <Route path="/" exact component={Home} />
         <Route path="/products" component={Products} />
+        <Route path="/" exact component={Home} />
         {/* </Container> */}
       </BrowserRouter>
     </div>

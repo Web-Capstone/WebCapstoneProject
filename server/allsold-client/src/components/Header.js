@@ -21,6 +21,7 @@ import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../actions/index";
 import { useHistory } from "react-router";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import "../styles/Header.css";
 
@@ -51,9 +52,11 @@ function Header(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const userFirstName = user?.result.firstName;
   const itemList = [
     {
-      text: "Item A",
+      text: user ? "Hello " + userFirstName : "Hello Guest ",
     },
     {
       text: "Item B",
@@ -70,17 +73,20 @@ function Header(props) {
   const handleClickAway = () => {
     setOpen(false);
   };
-  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
   const handleLogout = () => {
     dispatch(logoutUser(history));
-    //setUser(null);
+    setUser(null);
   };
 
+  // store.subscribe(() => {
+  //   console.log("STORE CHANGED");
+  // });
+
   // useEffect(() => {
-  //   const token = user?.token;
-  //   setUser(JSON.parse(localStorage.getItem('profile')));
-  // })
+
+  //   setUser(JSON.parse(localStorage.getItem("profile")));
+  // }, []);
 
   return (
     <div className={classes.root}>
@@ -117,7 +123,7 @@ function Header(props) {
               AllSold
             </Typography>
             {/* <img src={Logo} alt="logo" className="logo" /> */}
-            {!localStorage.getItem("profile") && !props.googleAuthReducer ? (
+            {!user && !props.googleAuthReducer ? (
               <Button
                 href="/Login"
                 variant="contained"
