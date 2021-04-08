@@ -15,7 +15,9 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
-import purple from "@material-ui/core/colors/purple";
+// import purple from "@material-ui/core/colors/purple";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -109,6 +111,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [1, 2, 3, 4, 5, 6];
+
+const cCards = [
+  {
+    title: "Samsung S10",
+    description: "Samsung S10 128gb refurbished best price",
+    price: "$500",
+    image:
+      "https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg?cs=srgb&dl=pexels-mohi-syed-47261.jpg&fm=jpg",
+  },
+  {
+    title: "iPhone 7",
+    description: "Apple iPhone 7 64GB refurbished",
+    price: "$400",
+    image:
+      "https://images.pexels.com/photos/1294886/pexels-photo-1294886.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  },
+  {
+    title: "Jeep Wrangler",
+    description: "Odometer - 51344, one owner, three years old",
+    price: "$34121",
+    image:
+      "https://images.pexels.com/photos/3551614/pexels-photo-3551614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  },
+  {
+    title: "Touring Bicycle",
+    description: "Used only for one month, good condition",
+    price: "$200",
+    image:
+      "https://images.pexels.com/photos/545004/pexels-photo-545004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  },
+  {
+    title: "Macbook Pro 2018",
+    description: "Apple MacBook Pro 2018 15 inches 512GB disk space",
+    price: "$900",
+    image:
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
+  },
+  {
+    title: "Apple Airpods",
+    description: "2 years old Apple Airpods with charging case",
+    price: "$80",
+    image:
+      "https://images.unsplash.com/photo-1505236273191-1dce886b01e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+];
 const tiers = [
   {
     title: "Free",
@@ -183,26 +230,27 @@ function Home() {
             Latest Products at Glance
           </Typography>
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {cCards.map((card) => (
+              <Grid item key={card.title} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg?cs=srgb&dl=pexels-mohi-syed-47261.jpg&fm=jpg"
+                    image={card.image}
                     title="image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5">
-                      Product Name
+                      {card.title}
                     </Typography>
-                    <Typography>Product Description of the product</Typography>
+                    <Typography>{card.description}</Typography>
+                    <Typography>Price: {card.price}</Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      View
+                      <AddShoppingCartIcon />
                     </Button>
                     <Button size="small" color="secondary">
-                      Favorite
+                      <FavoriteBorderIcon />
                     </Button>
                   </CardActions>
                 </Card>
