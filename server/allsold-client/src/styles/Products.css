@@ -1,24 +1,41 @@
 .products {
   display: flex;
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .products_section {
   flex: 0.15;
   padding: 10px;
-  margin-top: 15px;
+  padding-top: 15px;
+  height: 100vh;
+  padding-right: 40px;
+  box-shadow: 5px 0 5px -2px black;
+  position: fixed;
 }
 
 .products_section_categories,
 .products_section_services,
 .products_section_filter {
-  margin-left: 30px;
+  margin-left: 20px;
   margin-top: 20px;
-  border-bottom: 3px solid whitesmoke;
+  border-bottom: 3px solid gray;
+}
+
+.products_section_categories {
+  padding-bottom: 10px;
+}
+
+.products_section_filter {
+  margin-top: 25px;
+  padding-bottom: 20px;
 }
 
 .products_section_services {
-  margin-top: 15px;
-  border-bottom: 0px;
+  margin-top: 25px;
+  padding-bottom: 20px;
 }
 
 .section_sortBy {
@@ -38,38 +55,45 @@
 .products_main {
   padding-top: 30px;
   flex: 1;
-  width: 100vh;
-  margin: auto;
-  margin-left: 8%;
+  margin: 0 auto;
+  padding-left: 15%;
+  height: 95vh;
 }
 
-.products_main > h1 {
-  margin-top: 10px;
-  margin-bottom: 0px;
-  width: 85%;
-  border-bottom: 4px solid rgb(230, 227, 227);
+.selected_Products {
+  margin-bottom: 60px;
 }
 
-.products_main_grid {
-  margin-bottom: 10px;
+.selected_Products > h1 {
+  font-weight: 400;
 }
 
 .products_main_grid_card {
   cursor: pointer;
-  margin: 20px;
-  padding: 20px;
-  padding-top: 15px;
+  padding: 15px 40px;
+  margin: 2px;
   background-color: white;
   text-align: center;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.latest_product {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  margin-left: -40px;
+  margin-top: -10px;
 }
 
 .products_main_grid_card:hover {
-  box-shadow: 2px 2px 2px 3px gray;
+  box-shadow: 2px 2px 2px 2px #888;
 }
 
 .products_main_grid_img {
-  width: 150px;
-  height: 100px;
+  width: 250px;
+  height: 200px;
 }
 
 .products_main_grid_details {
@@ -83,25 +107,28 @@
 .products_main_grid_info > h2 {
   margin-top: 10px;
   font-size: 1.1rem;
+  text-align: left;
+  font-weight: 600;
 }
 
 .products_main_grid_info > h1 {
-  background-color: rgb(20, 3, 48);
   font-size: 1.2rem;
   padding: 5px;
   margin-bottom: 5px;
-  color: whitesmoke;
   width: fit-content;
   border-radius: 10px;
+  font-weight: 600;
+  color: brown;
 }
 
 .products_main_grid_seller {
-  color: gray;
-  /* background-color: #6ac099;
-  color: whitesmoke; */
+  background-color: whitesmoke;
+  color: black;
+  font-weight: 400;
   justify-content: space-between;
-  padding: 4px;
+  padding: 5px;
   border-radius: 10px;
   width: fit-content;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  margin-top: -8px;
 }

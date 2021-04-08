@@ -1,20 +1,15 @@
-import {
-    AUTH,LOGOUT
-} from "../actions/types.js"
+import { AUTH, LOGOUT } from "../actions/types.js";
 
-
-
-export default function (state = {authData:null}, action) {
+export default function (state = { authData: null }, action) {
   switch (action.type) {
-
     case AUTH:
-      localStorage.setItem('profile', JSON.stringify({...action?.data}));
-      return {...state, authData: action?.data};
-    
+      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
+      return { ...state, authData: action?.data };
+
     case LOGOUT:
       localStorage.clear();
-      return {...state, authData:null}
-    
+      return { ...state, authData: null };
+
     default:
       return state;
   }

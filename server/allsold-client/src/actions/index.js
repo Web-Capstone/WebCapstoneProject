@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_GOOGLE_USER, AUTH, LOGOUT } from "./types";
+import { FETCH_GOOGLE_USER, AUTH, LOGOUT, GET_ALL_PRODUCTS } from "./types";
 import * as api from "../API";
 
 export const fetchGoogleUser = () => async (dispatch) => {
@@ -19,6 +19,12 @@ export const loginUser = (formData, history) => async (dispatch) => {
   }
 };
 
+// Logout User
+export const logoutUser = (history) => (dispatch) => {
+  dispatch({ type: LOGOUT });
+  history.push("/");
+};
+
 // Register User
 export const registerUser = (formData, history) => async (dispatch) => {
   try {
@@ -31,8 +37,12 @@ export const registerUser = (formData, history) => async (dispatch) => {
   }
 };
 
-// Logout User
-export const logoutUser = (history) => (dispatch) => {
-  dispatch({ type: LOGOUT });
-  history.push("/");
+// Get All Users
+export const getAllProducts = (history, id) => async (dispatch) => {
+  try {
+    const { data } = await api.getAllProducts();
+    dispatch({ type: GET_ALL_PRODUCTS, data });
+  } catch (error) {
+    console.log(error);
+  }
 };

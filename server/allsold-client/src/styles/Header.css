@@ -1,6 +1,23 @@
+.headerInfo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 .logo {
   object-fit: contain !important;
-  height: 130px;
-  width: 130px;
-  display: flexs;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  flex: 1;
+}
+
+img {
+  cursor: pointer;
+}
+
+.header {
+  position: fixed;
+  top: 0 !important;
+  left: 0;
 }
