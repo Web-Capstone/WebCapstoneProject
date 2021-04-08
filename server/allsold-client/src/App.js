@@ -24,6 +24,7 @@ function App(props) {
         <Route path="/Register" component={Register} />
         <Route path="/products" component={Products} />
         <Route path="/" exact component={Home} />
+
         {/* </Container> */}
       </BrowserRouter>
     </div>
