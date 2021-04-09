@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Products_sectionRow from "./Products_sectionRow";
 import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
@@ -40,7 +40,7 @@ function Products() {
     setValue(event.target.value);
   };
   const getAllProducts = useSelector((state) => state.productsReducer);
-  console.log(getAllProducts);
+  const { data } = getAllProducts;
 
   return (
     <div className="products">
@@ -96,11 +96,9 @@ function Products() {
       </div>
 
       {/* Products Body */}
-      {/* {getAllProducts.map((post) => (
-        <Grid key={post._id} item xs={12} sm={6} md={6}>
-          <h1>{post._id}</h1>
-        </Grid>
-      ))} */}
+
+      {data ? data.map((post) => <h1>{post.productName}</h1>) : null}
+
       <div className="products_main">
         <div className="selected_Products">
           <h1>Selected Category</h1>
