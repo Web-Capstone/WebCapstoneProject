@@ -7,7 +7,6 @@ const Products_sectionRow = ({ Icon, title }) => {
   return (
     <div className="products_sectionRow">
       <Icon />
-
       <p>{title}</p>
     </div>
   );

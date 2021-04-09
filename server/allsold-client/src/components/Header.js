@@ -36,6 +36,8 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    top: 0,
+    left: 0,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -79,6 +81,10 @@ function Header(props) {
     setUser(null);
   };
 
+  const onImgClick = () => {
+    history.push("/");
+  };
+
   // store.subscribe(() => {
   //   console.log("STORE CHANGED");
   // });
@@ -119,28 +125,26 @@ function Header(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              AllSold
-            </Typography>
-            {/* <img src={Logo} alt="logo" className="logo" /> */}
-            {!user && !props.googleAuthReducer ? (
-              <Button
-                href="/Login"
-                variant="contained"
-                className={classes.buttonLogin}
-              >
-                Login
-              </Button>
-            ) : (
-              <Button
-                href="/api/logout"
-                variant="contained"
-                className={classes.buttonGoogle}
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            )}
+            <div className="headerInfo">
+              <div className="logo">
+                <img src={Logo} alt="logo" onClick={onImgClick} />
+              </div>
+              <div>
+                {!user && !props.googleAuthReducer ? (
+                  <Button href="/Login" variant="contained">
+                    Login
+                  </Button>
+                ) : (
+                  <Button
+                    href="/api/logout"
+                    variant="contained"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                )}
+              </div>
+            </div>
           </Toolbar>
         </AppBar>
       </ThemeProvider>
