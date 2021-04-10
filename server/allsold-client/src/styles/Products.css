@@ -1,6 +1,6 @@
 .products {
   display: flex;
-  background-color: white;
+  background-color: #fafafa;
   position: absolute;
   width: 100%;
   margin: 0 auto;
@@ -54,81 +54,16 @@
 
 .products_main {
   padding-top: 30px;
+  padding-left: 14%;
   flex: 1;
-  margin: 0 auto;
-  padding-left: 15%;
-  height: 95vh;
-}
-
-.selected_Products {
   margin-bottom: 60px;
 }
 
-.selected_Products > h1 {
+.products_main > h1 {
   font-weight: 400;
+  margin-left: 4%;
 }
 
-.products_main_grid_card {
-  cursor: pointer;
-  padding: 15px 40px;
-  margin: 2px;
-  background-color: white;
-  text-align: center;
-  border-right: 2px solid black;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
-
-.latest_product {
-  height: 80px;
-  width: 80px;
-  position: absolute;
-  margin-left: -40px;
-  margin-top: -10px;
-}
-
-.products_main_grid_card:hover {
-  box-shadow: 2px 2px 2px 2px #888;
-}
-
-.products_main_grid_img {
-  width: 250px;
-  height: 200px;
-}
-
-.products_main_grid_details {
-  padding: 10px;
-  margin-top: -10px;
-  background-color: white;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.products_main_grid_info > h2 {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  text-align: left;
-  font-weight: 600;
-}
-
-.products_main_grid_info > h1 {
-  font-size: 1.2rem;
-  padding: 5px;
-  margin-bottom: 5px;
-  width: fit-content;
-  border-radius: 10px;
-  font-weight: 600;
-  color: brown;
-}
-
-.products_main_grid_seller {
-  background-color: whitesmoke;
-  color: black;
-  font-weight: 400;
-  justify-content: space-between;
-  padding: 5px;
-  border-radius: 10px;
-  width: fit-content;
-  font-size: 1rem;
-  margin-top: -8px;
+.product_cards {
+  margin-left: 3%;
 }

@@ -17,3 +17,78 @@
   left: 35%;
   text-align: center;
 }
+
+.home_shop_section {
+  display: flex;
+  background-color: #2f5d62;
+  /* background-color: #6ac099; */
+}
+
+.home_shop_section_heading > span {
+  color: whitesmoke;
+  font-weight: 400;
+  position: relative;
+  margin-top: 80px;
+  margin-left: 120px;
+  font-size: 140px;
+  height: fit-content;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.home_shop_section_container {
+  flex: 1;
+}
+
+.home_section_banner {
+  margin: 90px;
+  padding: 20px;
+  display: flex;
+}
+
+.banner_images {
+  flex: 0.5;
+}
+
+.banner_image_one {
+  height: 400px;
+  width: 550px;
+}
+
+.banner_image_two {
+  height: 400px;
+  width: 550px;
+}
+
+.banner_images_styling {
+  padding: 5px;
+  height: 410px;
+  width: 560px;
+  position: relative;
+  margin-top: -25%;
+  margin-left: 10%;
+  background-color: black;
+  z-index: 999;
+}
+
+.banner_images_styling_one {
+  height: 410px;
+  width: 560px;
+  padding: 5px;
+  background-color: black;
+  z-index: -999;
+}
+
+.banner_content {
+  flex: 0.5;
+}
+
+.banner_content > h1 {
+  color: #2f5d62;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.banner_content > span {
+  font-size: 28px;
+  margin-top: 20px;
+}

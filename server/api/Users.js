@@ -40,7 +40,6 @@ router.post("/login", async (req, res) => {
       password,
       existingUser.password
     );
-
     if (!isPasswordCorrect)
       return res.status(400).send({ msg: "Invalid Creditianls ! Try Again" });
 
@@ -49,7 +48,6 @@ router.post("/login", async (req, res) => {
       process.env.token,
       { expiresIn: "1h" }
     );
-
     res.status(201).json({ result: existingUser, token });
   } catch (error) {
     res.status(500).json({ msg: "Someting went wrong" });

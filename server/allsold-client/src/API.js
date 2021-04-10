@@ -12,9 +12,9 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-// Route for login User
+// Route to login User
 export const login = (formData) => API.post("users/login", formData);
-// Route for Register User
+// Route to Register User
 export const register = (formData) => API.post("users/register", formData);
 // Route to get All Products
 export const getAllProducts = () => API.get("products");

@@ -16,11 +16,13 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import Logo from "../images/Allsold_logo.jpeg";
+import Logo from "../images/transparentLogo.png";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../actions/index";
 import { useHistory } from "react-router";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import "../styles/Header.css";
@@ -28,7 +30,7 @@ import "../styles/Header.css";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#6ac099",
+      main: "#2f5d62",
     },
   },
 });
@@ -47,6 +49,36 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: 250,
+  },
+  postAdd: {
+    margin: "5px",
+    backgroundColor: "#364547",
+    color: "whitesmoke",
+    fontSize: "16px",
+    letterSpacing: "2px",
+    fontWeight: "500px",
+    alignItems: "center",
+    "&:hover": {
+      backgroundColor: "whitesmoke",
+      borderColor: "#0062cc",
+      boxShadow: "none",
+      color: "black",
+    },
+  },
+  login: {
+    backgroundColor: "#ffb037",
+    margin: "5px",
+    color: "black",
+    fontSize: "16px",
+    letterSpacing: "1px",
+    fontWeight: "900px",
+    alignItems: "center",
+    "&:hover": {
+      backgroundColor: "whitesmoke",
+      borderColor: "#0062cc",
+      boxShadow: "none",
+      color: "black",
+    },
   },
 }));
 
@@ -129,15 +161,31 @@ function Header(props) {
               <div className="logo">
                 <img src={Logo} alt="logo" onClick={onImgClick} />
               </div>
+              <div className="sell">
+                <Button
+                  startIcon={<PostAddIcon />}
+                  href="/PostAdd"
+                  variant="contained"
+                  className={classes.postAdd}
+                >
+                  Post Add
+                </Button>
+              </div>
               <div>
                 {!user && !props.googleAuthReducer ? (
-                  <Button href="/Login" variant="contained">
+                  <Button
+                    href="/Login"
+                    className={classes.login}
+                    variant="contained"
+                    startIcon={<VpnKeyIcon />}
+                  >
                     Login
                   </Button>
                 ) : (
                   <Button
                     href="/api/logout"
                     variant="contained"
+                    className={classes.login}
                     onClick={handleLogout}
                   >
                     Logout

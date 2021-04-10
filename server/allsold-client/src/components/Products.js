@@ -13,11 +13,11 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import LatestProductbanner from "../images/newProduct1.png";
+
 import "../styles/Products.css";
 
 import { useSelector } from "react-redux";
+import ProductCard from "./ProductCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,211 +96,21 @@ function Products() {
       </div>
 
       {/* Products Body */}
-
-      {data ? data.map((post) => <h1>{post.productName}</h1>) : null}
-
       <div className="products_main">
-        <div className="selected_Products">
-          <h1>Selected Category</h1>
-          <div className="products_main_grid">
-            <Grid container spacing={0}>
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src={LatestProductbanner}
-                    alt="latest Product"
-                    className="latest_product"
-                  />
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/91fAU6mxFsL._AC_SX450_.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Sold By: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/41vMYgD92xL.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Sold By: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/41BFcDXPYZL.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Sold By: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/517E3cDRS1L.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Sold By: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/31jBba7+ySL.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Sold By: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-            </Grid>
-          </div>
-          <div className="products_main_grid">
-            <Grid container spacing={0}>
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/91fAU6mxFsL._AC_SX450_.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Seller: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/41vMYgD92xL.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Seller: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/41BFcDXPYZL.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Seller: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/517E3cDRS1L.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Seller: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-
-              <div className="products_main_grid_card">
-                <Grid item xs>
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/31jBba7+ySL.jpg"
-                    alt="Products"
-                    className="products_main_grid_img"
-                  />
-                  <div className="products_main_grid_details">
-                    <div className="products_main_grid_info">
-                      <h2>Product Title</h2>
-                      <h1>$23</h1>
-                    </div>
-                    <h3 className="products_main_grid_seller">
-                      Seller: <span>Abhishek</span>
-                    </h3>
-                  </div>
-                </Grid>
-              </div>
-            </Grid>
-          </div>
+        <h1>Latest Ads</h1>
+        <div className="product_cards">
+          {data
+            ? data.map((data) => (
+                <ProductCard
+                  key={data.__id}
+                  productDescription={data.productDescription}
+                  productTitle={data.prouctTitle}
+                  productImg={data.productImg}
+                  productPrice={data.productPrice}
+                  productName={data.productName}
+                />
+              ))
+            : null}
         </div>
       </div>
     </div>

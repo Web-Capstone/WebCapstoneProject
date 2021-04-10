@@ -1,0 +1,17 @@
+.product_card {
+  background-color: blanchedalmond;
+  margin: 8px;
+  display: inline-block;
+  width: 300px;
+  cursor: pointer;
+}
+
+.product_card_price {
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+  color: brown !important;
+}
+
+.product_card_favourirte_button {
+  margin-top: -25px !important;
+}

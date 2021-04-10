@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions/index";
 
 import "./App.css";
+import PostAdd from "./components/PostAdd";
 
 function App(props) {
   const history = useHistory();
@@ -29,6 +30,7 @@ function App(props) {
       <BrowserRouter>
         <Header />
         {/* <Container maxwidth="md"> */}
+        <Route path="/PostAdd" component={PostAdd} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <Route path="/products" component={Products} />
