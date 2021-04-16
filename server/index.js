@@ -4,6 +4,7 @@ const keys = require("./configuration/keys");
 const sessionCookie = require("cookie-session");
 const passport = require("passport");
 const cors = require("cors"); // For Cross Origin
+const bodyParser = require("body-parser");
 
 require("./models/GoogleUser");
 require("./api/passport");
@@ -58,10 +59,14 @@ app.use(
   })
 );
 
+app.use(express.json());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 require("./api/authenticationRoutes")(app);
+
+require("./api/billingRoute")(app);
 
 //middlewares
 app.use(middlewares.notFound);
