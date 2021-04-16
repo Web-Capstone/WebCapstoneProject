@@ -75,3 +75,10 @@ export const getExtraProducts = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const handleToken = (token) => async (dispatch) => {
+  const response = await axios.post("/api/stripe", token);
+
+  dispatch({ type: FETCH_GOOGLE_USER, payload: response.data });
+  dispatch({ type: AUTH, payload: response.data });
+};
