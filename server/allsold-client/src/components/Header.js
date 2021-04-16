@@ -26,6 +26,7 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import "../styles/Header.css";
+import Billing from "./Billing";
 
 const theme = createMuiTheme({
   palette: {
@@ -162,14 +163,15 @@ function Header(props) {
                 <img src={Logo} alt="logo" onClick={onImgClick} />
               </div>
               <div className="sell">
-                <Button
+                <Billing />
+                {/* <Button
                   startIcon={<PostAddIcon />}
                   href="/PostAdd"
                   variant="contained"
                   className={classes.postAdd}
                 >
                   Post Add
-                </Button>
+                </Button> */}
               </div>
               <div>
                 {!user && !props.googleAuthReducer ? (
