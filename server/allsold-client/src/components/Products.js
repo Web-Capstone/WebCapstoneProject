@@ -16,31 +16,36 @@ import Paper from "@material-ui/core/Paper";
 
 import "../styles/Products.css";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "./ProductCard";
+import { useHistory } from "react-router";
+// Components
+import RelatedProductCards from "./RelatedProductCards";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: "center",
+//     color: theme.palette.text.secondary,
+//   },
+// }));
 
 function Products() {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   // state
-  const [allProducts, setAllProducts] = useState();
   const [value, setValue] = React.useState("female");
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  // Getting data from redux store
   const getAllProducts = useSelector((state) => state.productsReducer);
+  const getExtraProducts = useSelector((state) => state.productsReducer);
   const { data } = getAllProducts;
+  const { ExtraProductsdata } = getExtraProducts;
 
   return (
     <div className="products">
@@ -102,7 +107,26 @@ function Products() {
           {data
             ? data.map((data) => (
                 <ProductCard
-                  key={data.__id}
+                  key={data._id}
+                  productId={data._id}
+                  productDescription={data.productDescription}
+                  productTitle={data.prouctTitle}
+                  productImg={data.productImg}
+                  productPrice={data.productPrice}
+                  productName={data.productName}
+                />
+              ))
+            : null}
+        </div>
+
+        <h1>Related Ads</h1>
+        <div className="related_product_cards">
+          {console.log(ExtraProductsdata)}
+          {ExtraProductsdata
+            ? ExtraProductsdata.map((data) => (
+                <RelatedProductCards
+                  key={data._id}
+                  productId={data._id}
                   productDescription={data.productDescription}
                   productTitle={data.prouctTitle}
                   productImg={data.productImg}

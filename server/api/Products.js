@@ -14,6 +14,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//Shows a single products
+router.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const singleProduct = await Products.findById(id);
+    res.json(singleProduct);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Post Add
 router.post("/", async (req, res, next) => {
   try {
     const {

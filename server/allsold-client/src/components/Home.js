@@ -22,6 +22,7 @@ import Footer from "./Footer";
 import BuySell from "../images/buySell.jpg";
 import ExploreIcon from "@material-ui/icons/Explore";
 import happyCustomerImg from "../images/happyCustomer.jpg";
+import HomeBannerProducts from "./HomeBannerProducts";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -65,11 +66,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: "0 auto",
     marginTop: "30px",
-    backgroundColor: "#364547",
-    color: "white",
+    backgroundColor: "#ffb037",
+    color: "black",
     fontSize: "16px",
     letterSpacing: "1px",
-    fontWeight: "900px",
+    fontWeight: "900px !important",
     width: "justifyContent",
     maxWidth: "150px",
   },
@@ -116,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "18px",
     marginTop: "30px",
   },
+
   // cssRoot: {
   //   color: theme.palette.getContrastText(purple[500]),
   //   backgroundColor: purple[500],
@@ -249,6 +251,8 @@ function Home() {
             </Button>
           </Box>
         </Box>
+
+        <HomeBannerProducts />
 
         <div className="home_section_banner">
           <div className="banner_images">

@@ -11,7 +11,7 @@ import Products from "./components/Products";
 import ProductDetails from "./components/productDetails";
 import { useDispatch } from "react-redux";
 
-import { getAllProducts } from "./actions/index";
+import { getAllProducts, getExtraProducts } from "./actions/index";
 
 import "./App.css";
 import PostAdd from "./components/PostAdd";
@@ -23,6 +23,7 @@ function App(props) {
   useEffect(() => {
     props.fetchGoogleUser();
     dispatch(getAllProducts());
+    dispatch(getExtraProducts());
   }, []);
 
   return (
@@ -34,7 +35,7 @@ function App(props) {
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <Route path="/products" component={Products} />
-        <Route path="/productDetails" component={ProductDetails} />
+        <Route path="/productDetails/:id" component={ProductDetails} />
         <Route path="/" exact component={Home} />
 
         {/* </Container> */}

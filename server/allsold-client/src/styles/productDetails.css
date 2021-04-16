@@ -1,6 +1,6 @@
 .product_details {
   display: flex;
-  background-color: white;
+  background-color: whitesmoke;
   min-height: 100vh;
   margin-bottom: 100px;
 }
@@ -12,28 +12,71 @@
 .product_img {
   height: 600px;
   width: 1100px;
-  border: 2px solid gray;
-  border-radius: 10px;
+  /* box-shadow: 2px 2px 2px 4px white; */
   margin: 0 94px auto auto;
   margin-top: 100px;
 }
 
-.product_description {
-  height: 300px;
+.product_img img {
+  box-shadow: 0 0 2px black;
+}
+
+.product_description_box {
+  height: auto;
   width: 1100px;
   border: 2px solid gray;
-  border-radius: 10px;
   margin: 0 94px auto auto;
   margin-top: 3px;
+  box-shadow: 0 0 2px black;
+  padding-left: 30px;
+  padding-bottom: 30px;
+}
+
+.product_description_details {
+  height: 40%;
+  border-bottom: 2px solid gray;
+  padding-bottom: 30px;
+  margin-right: 20px;
+}
+
+.heading {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.details_info {
+  color: gray;
+  font-weight: 400;
+}
+
+.details_ span {
+  color: black;
+}
+
+.description_info {
+  font-weight: 400;
+}
+
+.product_info_price {
+  display: flex;
+  padding-right: 10px;
+  align-items: center;
+}
+.price_info {
+  font-size: 3rem;
+  margin-top: 20px;
+  font-weight: 500;
+  flex: 1;
 }
 
 .related_ads {
   height: 300px;
   width: 1100px;
   border: 2px solid gray;
-  border-radius: 10px;
+  box-shadow: 0 0 2px black;
   margin: 0 94px auto auto;
   margin-top: 100px;
+  padding-left: 30px;
+  padding-top: 20px;
 }
 
 .product_details_right {
@@ -42,19 +85,53 @@
 }
 
 .product_info {
-  height: 300px;
+  height: auto;
   width: 85%;
   border: 2px solid gray;
-  border-radius: 10px;
   margin: 0 94px auto auto;
   margin-top: 100px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+  box-shadow: 0 0 2px black;
+}
+
+.product_info_tagline {
+  margin-top: 0px;
+  font-size: 1.5rem;
+  color: gray;
+}
+.product_info_tagline h2 {
+  font-weight: 400;
+}
+
+.product_info_others {
+  margin-top: 40px;
+  display: flex;
+}
+
+.product_info_others h2 {
+  flex: 1;
 }
 
 .seller_info {
-  height: 300px;
+  height: auto;
   width: 85%;
   border: 2px solid gray;
-  border-radius: 10px;
+  box-shadow: 0 0 2px black;
   margin: 0 94px auto auto;
   margin-top: 40px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.chat_with_seller_button {
+  background-color: #364547 !important;
+  width: 90%;
+  padding-left: 30px !important;
+  position: relative;
+  margin-top: 40px !important;
+  margin-left: 15px !important;
+  padding: 10px !important;
+  font-size: 1rem !important;
 }

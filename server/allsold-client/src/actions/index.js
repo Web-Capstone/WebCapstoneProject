@@ -1,5 +1,12 @@
 import axios from "axios";
-import { FETCH_GOOGLE_USER, AUTH, LOGOUT, GET_ALL_PRODUCTS } from "./types";
+import {
+  FETCH_GOOGLE_USER,
+  AUTH,
+  LOGOUT,
+  GET_ALL_PRODUCTS,
+  GET_SINGLE_PRODUCT,
+  GET_EXTRA_PRODUCTS,
+} from "./types";
 import * as api from "../API";
 
 export const fetchGoogleUser = () => async (dispatch) => {
@@ -37,11 +44,33 @@ export const registerUser = (formData, history) => async (dispatch) => {
   }
 };
 
-// Get All Users
-export const getAllProducts = (history, id) => async (dispatch) => {
+// Get All Products
+export const getAllProducts = () => async (dispatch) => {
   try {
     const { data } = await api.getAllProducts();
     dispatch({ type: GET_ALL_PRODUCTS, data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Get single Product
+export const getSingleProduct = (history, id) => async (dispatch) => {
+  try {
+    const { data } = await api.getSingleProduct(id);
+    dispatch({ type: GET_SINGLE_PRODUCT, data });
+    history.push("/productDetails/" + id);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Get extra Products
+
+export const getExtraProducts = () => async (dispatch) => {
+  try {
+    const { data } = await api.getExtraProducts();
+    dispatch({ type: GET_EXTRA_PRODUCTS, data });
   } catch (error) {
     console.log(error);
   }

@@ -42,6 +42,8 @@
 
 .home_section_banner {
   margin: 90px;
+  margin-top: 150px;
+  margin-bottom: 150px;
   padding: 20px;
   display: flex;
 }

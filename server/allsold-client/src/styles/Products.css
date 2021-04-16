@@ -53,7 +53,6 @@
 } */
 
 .products_main {
-  padding-top: 30px;
   padding-left: 14%;
   flex: 1;
   margin-bottom: 60px;
@@ -62,8 +61,13 @@
 .products_main > h1 {
   font-weight: 400;
   margin-left: 4%;
+  margin-top: 40px;
 }
 
 .product_cards {
   margin-left: 3%;
+}
+
+.related_product_cards {
+  display: flex;
 }

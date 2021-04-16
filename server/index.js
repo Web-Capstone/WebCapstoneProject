@@ -20,6 +20,7 @@ const app = express();
 //Getting api
 const users = require("./api/Users");
 const products = require("./api/Products");
+const extraProducts = require("./api/ExtraProducts");
 
 //Connect to mongoose
 const OPTS = {
@@ -48,6 +49,7 @@ app.get("/", (req, res) => {
 //api routes for other pages
 app.use("/api/users", users);
 app.use("/api/products", products);
+app.use("/api/extraProducts", extraProducts);
 
 app.use(
   sessionCookie({
