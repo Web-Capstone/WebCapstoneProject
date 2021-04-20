@@ -272,7 +272,7 @@ function Home() {
               />
             </div>
           </div>
-          <div className="banner_content">
+          {/* <div className="banner_content">
             <h1>About Us</h1>
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -291,7 +291,7 @@ function Home() {
             >
               Find More
             </Button>
-          </div>
+          </div> */}
         </div>
 
         <div className="home_shop_section">

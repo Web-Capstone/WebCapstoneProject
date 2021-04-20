@@ -6,8 +6,6 @@ import * as actions from "../actions";
 
 class Billing extends Component {
   render() {
-    debugger;
-
     return (
       <div>
         <StripeCheckout
