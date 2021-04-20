@@ -31,7 +31,10 @@ import Billing from "./Billing";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#2f5d62",
+      main: "#293241",
+    },
+    secondary: {
+      main: "#ee6c4d",
     },
   },
 });
@@ -67,9 +70,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   login: {
-    backgroundColor: "#ffb037",
+    backgroundColor: "#3d5a80",
     margin: "5px",
-    color: "black",
+    color: "whitesmoke",
     fontSize: "16px",
     letterSpacing: "1px",
     fontWeight: "900px",
