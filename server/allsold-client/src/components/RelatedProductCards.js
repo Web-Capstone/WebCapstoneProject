@@ -18,32 +18,31 @@ import Button from "@material-ui/core/Button";
 import "../styles/RelatedProductCards.css";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "80%",
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "whitesmoke",
-  },
-
-  card: {
-    height: "auto",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: { paddingTop: "56.25%" },
-  cardContent: {
-    flexGrow: 1,
-  },
+  // root: {
+  //   width: "80%",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   backgroundColor: "whitesmoke",
+  // },
+  // card: {
+  //   height: "auto",
+  //   display: "flex",
+  //   flexDirection: "column",
+  // },
+  // cardMedia: { paddingTop: "56.25%" },
+  // cardContent: {
+  //   flexGrow: 1,
+  // },
 }));
 
-const RelatedProductCards = ({
+function RelatedProductCards({
   productId,
   productImg,
   productTitle,
   productDescription,
   productPrice,
   productName,
-}) => {
+}) {
   const classes = useStyles();
   return (
     <div className="related_products_card">
@@ -76,6 +75,6 @@ const RelatedProductCards = ({
       </Grid>
     </div>
   );
-};
+}
 
 export default RelatedProductCards;

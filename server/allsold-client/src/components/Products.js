@@ -14,13 +14,13 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 
-import "../styles/Products.css";
-
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "./ProductCard";
-import { useHistory } from "react-router";
 // Components
 import RelatedProductCards from "./RelatedProductCards";
+
+//css
+import "../styles/Products.css";
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -36,16 +36,15 @@ import RelatedProductCards from "./RelatedProductCards";
 function Products() {
   // const classes = useStyles();
 
+  // Getting data from redux store
+  const getAllProducts = useSelector((state) => state.productsReducer.data);
+  const getExtraProducts = useSelector((state) => state.relatedAds.data);
+
   // state
   const [value, setValue] = React.useState("female");
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  // Getting data from redux store
-  const getAllProducts = useSelector((state) => state.productsReducer);
-  const getExtraProducts = useSelector((state) => state.productsReducer);
-  const { data } = getAllProducts;
-  const { ExtraProductsdata } = getExtraProducts;
 
   return (
     <div className="products">
@@ -104,8 +103,8 @@ function Products() {
       <div className="products_main">
         <h1>Latest Ads</h1>
         <div className="product_cards">
-          {data
-            ? data.map((data) => (
+          {getAllProducts
+            ? getAllProducts.map((data) => (
                 <ProductCard
                   key={data._id}
                   productId={data._id}
@@ -121,20 +120,26 @@ function Products() {
 
         <h1>Related Ads</h1>
         <div className="related_product_cards">
-          {console.log(ExtraProductsdata)}
-          {ExtraProductsdata
-            ? ExtraProductsdata.map((data) => (
-                <RelatedProductCards
-                  key={data._id}
-                  productId={data._id}
-                  productDescription={data.productDescription}
-                  productTitle={data.prouctTitle}
-                  productImg={data.productImg}
-                  productPrice={data.productPrice}
-                  productName={data.productName}
-                />
+          {console.log(getExtraProducts)}
+          {console.log(getAllProducts)}
+          {getExtraProducts
+            ? getExtraProducts.map((data) => (
+                // <RelatedProductCards
+                //   key={data._id}
+                //   productId={data._id}
+                //   productDescription={data.productDescription}
+                //   productTitle={data.prouctTitle}
+                //   productImg={data.productImg}
+                //   productPrice={data.productPrice}
+                //   productName={data.productName}
+                //  />
+
+                <div key={data._id}>
+                  <h1>hhhh</h1>
+                  <img src={data.productImg} />
+                </div>
               ))
-            : null}
+            : console.log("Related ads null")}
         </div>
       </div>
     </div>

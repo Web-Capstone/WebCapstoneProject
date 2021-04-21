@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 // Material-ui
 import { Button, IconButton } from "@material-ui/core";
 import ShareIcon from "@material-ui/icons/Share";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { makeStyles } from "@material-ui/core/styles";
+//Components
+import RelatedProductCards from "./RelatedProductCards";
 
 import "../styles/productDetails.css";
 
@@ -22,6 +23,8 @@ const ProductDetails = () => {
   const getSingleProduct = useSelector((state) => state.productsReducer);
   const { Singledata: data } = getSingleProduct;
   const classes = useStyles();
+  const getExtraProducts = useSelector((state) => state.productsReducer);
+  const { ExtraProductsdata } = getExtraProducts;
 
   return (
     <>
@@ -49,6 +52,19 @@ const ProductDetails = () => {
           </div>
           <div className="related_ads">
             <h1>Related ads</h1>
+            {ExtraProductsdata
+              ? ExtraProductsdata.map((Edata) => (
+                  <RelatedProductCards
+                    key={Edata._id}
+                    productId={Edata._id}
+                    productDescription={Edata.productDescription}
+                    productTitle={Edata.prouctTitle}
+                    productImg={Edata.productImg}
+                    productPrice={Edata.productPrice}
+                    productName={Edata.productName}
+                  />
+                ))
+              : null}
           </div>
         </div>
         <div className="product_details_right">
