@@ -166,15 +166,15 @@ function Header(props) {
                 <img src={Logo} alt="logo" onClick={onImgClick} />
               </div>
               <div className="sell">
-                <Billing />
-                {/* <Button
+                {/* <Billing /> */}
+                <Button
                   startIcon={<PostAddIcon />}
                   href="/PostAdd"
                   variant="contained"
                   className={classes.postAdd}
                 >
                   Post Add
-                </Button> */}
+                </Button>
               </div>
               <div>
                 {!user && !props.googleAuthReducer ? (

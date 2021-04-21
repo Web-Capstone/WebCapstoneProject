@@ -19,14 +19,10 @@ import StarIcon from "@material-ui/icons/StarBorder";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Footer from "./Footer";
-import BuySell from "../images/buySell.jpg";
-import ExploreIcon from "@material-ui/icons/Explore";
-import happyCustomerImg from "../images/happyCustomer.jpg";
-import HomeBannerProducts from "./HomeBannerProducts";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#364547",
+      main: "#6ac099",
     },
   },
 });
@@ -37,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: 400,
   },
-
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
@@ -66,16 +61,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: "0 auto",
     marginTop: "30px",
-    backgroundColor: "#293241",
-    color: "whitesmoke",
-    fontSize: "16px",
-    letterSpacing: "1px",
-    fontWeight: "900px !important",
-    width: "justifyContent",
-    maxWidth: "150px",
+    maxWidth: "100px",
   },
   productContainer: {
-    padding: "30px 0 ",
+    padding: "20px 0",
   },
   productTitle: {
     fontWeight: 800,
@@ -113,11 +102,6 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },
-  button: {
-    fontSize: "18px",
-    marginTop: "30px",
-  },
-
   // cssRoot: {
   //   color: theme.palette.getContrastText(purple[500]),
   //   backgroundColor: purple[500],
@@ -171,20 +155,6 @@ const cCards = [
     price: "$80",
     image:
       "https://images.unsplash.com/photo-1505236273191-1dce886b01e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-  },
-  {
-    title: "Jeep Wrangler",
-    description: "Odometer - 51344, one owner, three years old",
-    price: "$34121",
-    image:
-      "https://images.pexels.com/photos/3551614/pexels-photo-3551614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  },
-  {
-    title: "Touring Bicycle",
-    description: "Used only for one month, good condition",
-    price: "$200",
-    image:
-      "https://images.pexels.com/photos/545004/pexels-photo-545004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
 ];
 const tiers = [
@@ -244,95 +214,51 @@ function Home() {
               className={classes.explore}
               variant="contained"
               color="primary"
+              size="large"
               href="/products"
-              startIcon={<ExploreIcon />}
             >
               Explore
             </Button>
           </Box>
         </Box>
 
-        <HomeBannerProducts />
-
-        <div className="home_section_banner">
-          <div className="banner_images">
-            <div className="banner_images_styling_one">
-              <img
-                src={BuySell}
-                alt="Buy Sell banner"
-                className="banner_image_one"
-              />
-            </div>
-
-            <div className="banner_images_styling">
-              <img
-                src={happyCustomerImg}
-                alt="Buy Sell banner"
-                className="banner_image_two"
-              />
-            </div>
-          </div>
-          <div className="banner_content">
-            <h1>About Us</h1>
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.{" "}
-            </span>
-            <br />
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-            >
-              Find More
-            </Button>
-          </div>
-        </div>
-
-        <div className="home_shop_section">
-          <div className="home_shop_section_heading">
-            <span>SHOP</span>
-          </div>
-
-          <div className="home_shop_section_container">
-            <Container className={classes.productContainer}>
-              <Grid container spacing={4}>
-                {cCards.map((card) => (
-                  <Grid item key={card.title} md={3}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image={card.image}
-                        title="image title"
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5">
-                          {card.title}
-                        </Typography>
-                        <Typography>{card.description}</Typography>
-                        <Typography>Price: {card.price}</Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          <AddShoppingCartIcon />
-                        </Button>
-                        <Button size="small" color="secondary">
-                          <FavoriteBorderIcon />
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
+        <Container maxwidth="lg" className={classes.productContainer}>
+          <Typography
+            variant="h3"
+            className={classes.productTitle}
+            align="center"
+          >
+            Latest Products at Glance
+          </Typography>
+          <Grid container spacing={4}>
+            {cCards.map((card) => (
+              <Grid item key={card.title} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={card.image}
+                    title="image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5">
+                      {card.title}
+                    </Typography>
+                    <Typography>{card.description}</Typography>
+                    <Typography>Price: {card.price}</Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      <AddShoppingCartIcon />
+                    </Button>
+                    <Button size="small" color="secondary">
+                      <FavoriteBorderIcon />
+                    </Button>
+                  </CardActions>
+                </Card>
               </Grid>
-            </Container>
-          </div>
-        </div>
-
+            ))}
+          </Grid>
+        </Container>
         <Container
           maxWidth="sm"
           component="main"

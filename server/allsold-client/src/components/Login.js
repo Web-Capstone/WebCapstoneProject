@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const initialState = { email: "", firstName: "", lastName: "", password: "" };
+const initialState = { email: "", password: "" };
 
 const Login = (props) => {
   const classes = useStyles();
@@ -86,8 +86,9 @@ const Login = (props) => {
             type="password"
             variant="outlined"
             color="#440a67"
+            id="password"
             required="true"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
