@@ -10,6 +10,8 @@ import { loginUser } from "../actions/index";
 import { useDispatch } from "react-redux";
 import { Container } from "@material-ui/core";
 import { useHistory } from "react-router";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import Footer from "./Footer";
 import SpeechRec from "./SpeechRec";
 import Grid from "@material-ui/core/Grid";
@@ -26,21 +28,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const initialState = { email: "", password: "" };
 
 const Login = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = React.useState(initialState);
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData, history));
+    setOpen(true);
   };
 
   const handleChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   const handleGoogle = () => {
@@ -148,6 +164,11 @@ const Login = () => {
             </Grid>
           </Grid>
         </form>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            Succesfully Loged In
+          </Alert>
+        </Snackbar>
       </Grid>
 
       <Grid item xs={12}>

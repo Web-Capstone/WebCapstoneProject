@@ -34,14 +34,14 @@ router.post("/login", async (req, res) => {
   try {
     const existingUser = await Registration.findOne({ email });
     if (!existingUser)
-      return res.status(404).send({ msg: "User Doesn't exist" });
+      return res.status(404).json({ msg: "User Doesn't exist" });
 
     const isPasswordCorrect = await becrypt.compare(
       password,
       existingUser.password
     );
     if (!isPasswordCorrect)
-      return res.status(400).send({ msg: "Invalid Creditianls ! Try Again" });
+      return res.status(400).json({ msg: "Invalid Creditianls ! Try Again" });
 
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },

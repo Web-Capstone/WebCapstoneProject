@@ -20,6 +20,5 @@ export const register = (formData) => API.post("users/register", formData);
 export const getAllProducts = () => API.get("products");
 // Route to get single Product
 export const getSingleProduct = (id) => API.get("products/" + id);
-
-// Route to get All extra
+// Route to get All extra products
 export const getExtraProducts = () => API.get("extraProducts");

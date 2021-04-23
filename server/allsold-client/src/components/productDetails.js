@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 // Material-ui
 import { Button, IconButton } from "@material-ui/core";
 import ShareIcon from "@material-ui/icons/Share";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { makeStyles } from "@material-ui/core/styles";
+//Components
+import RelatedProductCards from "./RelatedProductCards";
 
 import "../styles/productDetails.css";
 
@@ -21,7 +22,10 @@ const useStyles = makeStyles((theme) => ({
 const ProductDetails = () => {
   const getSingleProduct = useSelector((state) => state.productsReducer);
   const { Singledata: data } = getSingleProduct;
+  const getAllProducts = useSelector((state) => state.productsReducer.data);
   const classes = useStyles();
+  const getExtraProducts = useSelector((state) => state.productsReducer);
+  const { ExtraProductsdata } = getExtraProducts;
 
   return (
     <>
@@ -49,6 +53,19 @@ const ProductDetails = () => {
           </div>
           <div className="related_ads">
             <h1>Related ads</h1>
+            {getAllProducts
+              ? getAllProducts.map((Edata) => (
+                  <RelatedProductCards
+                    key={Edata._id}
+                    productId={Edata._id}
+                    productDescription={Edata.productDescription}
+                    productTitle={Edata.prouctTitle}
+                    productImg={Edata.productImg}
+                    productPrice={Edata.productPrice}
+                    productName={Edata.productName}
+                  />
+                ))
+              : null}
           </div>
         </div>
         <div className="product_details_right">
@@ -76,13 +93,25 @@ const ProductDetails = () => {
           </div>
           <div className="seller_info">
             <h1 className="seller_info_heading">Seller Description</h1>
-            <div className="seller_details"></div>
+            <div className="seller_details">
+              is simply dummy text of the printing and typesetting industry.
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown printer took a galley of type and
+              scrambled it to{" "}
+            </div>
             <Button
               variant="contained"
               color="primary"
               className="chat_with_seller_button"
             >
               Chat with seller
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className="chat_with_seller_button"
+            >
+              Contact Seller
             </Button>
           </div>
         </div>

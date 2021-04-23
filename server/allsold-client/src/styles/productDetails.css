@@ -130,8 +130,14 @@
   width: 90%;
   padding-left: 30px !important;
   position: relative;
-  margin-top: 40px !important;
+  margin-top: 10px !important;
   margin-left: 15px !important;
   padding: 10px !important;
   font-size: 1rem !important;
+}
+
+.seller_details {
+  font-size: 20px;
+  padding-right: 10px;
+  margin-bottom: 10px;
 }

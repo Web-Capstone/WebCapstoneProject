@@ -66,7 +66,6 @@ export const getSingleProduct = (history, id) => async (dispatch) => {
 };
 
 // Get extra Products
-
 export const getExtraProducts = () => async (dispatch) => {
   try {
     const { data } = await api.getExtraProducts();

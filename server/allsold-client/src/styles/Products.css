@@ -26,6 +26,7 @@
 
 .products_section_categories {
   padding-bottom: 10px;
+  margin-top: 90px;
 }
 
 .products_section_filter {
@@ -55,6 +56,7 @@
 .products_main {
   padding-left: 14%;
   flex: 1;
+  max-width: 100%;
   margin-bottom: 60px;
 }
 
@@ -70,4 +72,6 @@
 
 .related_product_cards {
   display: flex;
+  /* height: 300px;
+  width: 400px; */
 }
