@@ -25,8 +25,8 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchGoogleUser());
-    dispatch(getAllProducts());
     dispatch(getExtraProducts());
+    dispatch(getAllProducts());
   }, []);
 
   return (

@@ -13,10 +13,12 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "./ProductCard";
 // Components
+
 import RelatedProductCards from "./RelatedProductCards";
 
 //css
@@ -37,8 +39,9 @@ function Products() {
   // const classes = useStyles();
 
   // Getting data from redux store
-  const getAllProducts = useSelector((state) => state.productsReducer.data);
+
   const getExtraProducts = useSelector((state) => state.relatedAds.data);
+  const getAllProducts = useSelector((state) => state.productsReducer.data);
 
   // state
   const [value, setValue] = React.useState("female");
@@ -103,43 +106,57 @@ function Products() {
       <div className="products_main">
         <h1>Latest Ads</h1>
         <div className="product_cards">
-          {getAllProducts
-            ? getAllProducts.map((data) => (
-                <ProductCard
-                  key={data._id}
-                  productId={data._id}
-                  productDescription={data.productDescription}
-                  productTitle={data.prouctTitle}
-                  productImg={data.productImg}
-                  productPrice={data.productPrice}
-                  productName={data.productName}
-                />
-              ))
-            : null}
+          {console.log("All Products", getAllProducts)}
+          {getAllProducts ? (
+            getAllProducts.map((data) => (
+              <ProductCard
+                key={data._id}
+                productId={data._id}
+                productDescription={data.productDescription}
+                productTitle={data.prouctTitle}
+                productImg={data.productImg}
+                productPrice={data.productPrice}
+                productName={data.productName}
+              />
+            ))
+          ) : (
+            <CircularProgress />
+          )}
         </div>
 
         <h1>Related Ads</h1>
         <div className="related_product_cards">
-          {console.log(getExtraProducts)}
-          {console.log(getAllProducts)}
-          {getExtraProducts
-            ? getExtraProducts.map((data) => (
-                // <RelatedProductCards
-                //   key={data._id}
-                //   productId={data._id}
-                //   productDescription={data.productDescription}
-                //   productTitle={data.prouctTitle}
-                //   productImg={data.productImg}
-                //   productPrice={data.productPrice}
-                //   productName={data.productName}
-                //  />
+          {console.log("Extra Products ", getExtraProducts)}
 
-                <div key={data._id}>
-                  <h1>hhhh</h1>
-                  <img src={data.productImg} />
-                </div>
-              ))
-            : console.log("Related ads null")}
+          {getExtraProducts ? (
+            getExtraProducts.map((data) => (
+              <RelatedProductCards
+                key={data._id}
+                productId={data._id}
+                productDescription={data.productDescription}
+                productTitle={data.prouctTitle}
+                productImg={data.productImg}
+                productPrice={data.productPrice}
+                productName={data.productName}
+              />
+              // <RelatedProductCards
+              //   key={edata._id}
+              //   productId={edata._id}
+              //   productDescription={edata.productDescription}
+              //   productTitle={edata.prouctTitle}
+              //   productImg={edata.productImg}
+              //   productPrice={edata.productPrice}
+              //   productName={edata.productName}
+              // />
+
+              // <div key={edata._id}>
+              //   <h1>hhhh</h1>
+              //   <img src={edata.productImg} />
+              // </div>
+            ))
+          ) : (
+            <CircularProgress />
+          )}
         </div>
       </div>
     </div>

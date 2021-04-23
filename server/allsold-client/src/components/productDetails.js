@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const ProductDetails = () => {
   const getSingleProduct = useSelector((state) => state.productsReducer);
   const { Singledata: data } = getSingleProduct;
+  const getAllProducts = useSelector((state) => state.productsReducer.data);
   const classes = useStyles();
   const getExtraProducts = useSelector((state) => state.productsReducer);
   const { ExtraProductsdata } = getExtraProducts;
@@ -52,8 +53,8 @@ const ProductDetails = () => {
           </div>
           <div className="related_ads">
             <h1>Related ads</h1>
-            {ExtraProductsdata
-              ? ExtraProductsdata.map((Edata) => (
+            {getAllProducts
+              ? getAllProducts.map((Edata) => (
                   <RelatedProductCards
                     key={Edata._id}
                     productId={Edata._id}
@@ -92,13 +93,25 @@ const ProductDetails = () => {
           </div>
           <div className="seller_info">
             <h1 className="seller_info_heading">Seller Description</h1>
-            <div className="seller_details"></div>
+            <div className="seller_details">
+              is simply dummy text of the printing and typesetting industry.
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown printer took a galley of type and
+              scrambled it to{" "}
+            </div>
             <Button
               variant="contained"
               color="primary"
               className="chat_with_seller_button"
             >
               Chat with seller
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className="chat_with_seller_button"
+            >
+              Contact Seller
             </Button>
           </div>
         </div>

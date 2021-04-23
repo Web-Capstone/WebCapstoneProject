@@ -31,8 +31,9 @@ import Billing from "./Billing";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    top: 0,
-    left: 0,
+    width: "100%",
+    position: "fixed",
+    zIndex: "+99",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -86,13 +87,16 @@ function Header(props) {
       text: user ? "Hello " + userFirstName : "Hello Guest ",
     },
     {
-      text: "Item B",
+      text: "All Products",
     },
     {
-      text: "Item C",
+      text: "Post Add",
     },
     {
-      text: "Item D",
+      text: "Contact us",
+    },
+    {
+      text: "About Us",
     },
   ];
 
@@ -154,15 +158,15 @@ function Header(props) {
               <img src={Logo} alt="logo" onClick={onImgClick} />
             </div>
             <div className="sell">
-              <Billing />
-              {/* <Button
-                  startIcon={<PostAddIcon />}
-                  href="/PostAdd"
-                  variant="contained"
-                  className={classes.postAdd}
-                >
-                  Post Add
-                </Button> */}
+              {/* <Billing /> */}
+              <Button
+                startIcon={<PostAddIcon />}
+                href="/PostAdd"
+                variant="contained"
+                className={classes.postAdd}
+              >
+                Post Add
+              </Button>
             </div>
             <div>
               {!user && !props.googleAuthReducer ? (

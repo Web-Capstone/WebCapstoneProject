@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Products = require("../models/Products");
 mongoose.set("useFindAndModify", false);
 
-// Show all the products
+// Get all the products
 router.get("/", async (req, res, next) => {
   try {
     const products = await Products.find();
@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//Shows a single products
+//Get a single products
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   try {

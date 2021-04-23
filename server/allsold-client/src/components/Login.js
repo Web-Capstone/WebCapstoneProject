@@ -11,6 +11,8 @@ import { loginUser, fetchGoogleUser } from "../actions/index";
 import { connect, useDispatch } from "react-redux";
 import { Container } from "@material-ui/core";
 import { useHistory } from "react-router";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import Footer from "./Footer";
 
 import SpeechRec from "./SpeechRec";
@@ -30,19 +32,33 @@ const useStyles = makeStyles((theme) => ({
 
 const initialState = { email: "", password: "" };
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const Login = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = React.useState(initialState);
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData, history));
+    setOpen(true);
   };
 
   const handleChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   // const handleNote = (e) => {
@@ -72,7 +88,11 @@ const Login = (props) => {
               ),
               endAdornment: (
                 <InputAdornment position="end">
-                  <SpeechRec id="email" handleChange={handleChange} />
+                  <SpeechRec
+                    id="email"
+                    className="speech"
+                    handleChange={handleChange}
+                  />
                 </InputAdornment>
               ),
             }}
@@ -99,6 +119,11 @@ const Login = (props) => {
           <Button variant="contained" color="primary" type="submit">
             Login
           </Button>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              Succesfully Loged In
+            </Alert>
+          </Snackbar>
           <Button
             className="register"
             variant="contained"
