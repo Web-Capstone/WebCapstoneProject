@@ -12,6 +12,7 @@ import { connect, useDispatch } from "react-redux";
 import Footer from "./Footer";
 import { useHistory } from "react-router";
 import "../styles/Register.css";
+import SpeechRec from "./SpeechRec";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -33,44 +34,36 @@ const Login = () => {
     dispatch(registerUser(formData, history));
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
+  const handleChange = (id, value) => {
+    setFormData({ ...formData, [id]: value });
   };
+
   return (
     <Container maxwidth="md">
       <form className="registerForm" onSubmit={handleSubmit}>
         <TextField
           className={classes.margin}
           autoFocus="true"
-          id="input-with-icon-textfield outlined"
+          id="email"
           name="email"
           label="email"
           variant="outlined"
           required="true"
           color="#440a67"
-          onChange={handleChange}
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
                 <EmailIcon />
               </InputAdornment>
             ),
-          }}
-        />
-
-        <TextField
-          className={classes.margin}
-          id="input-with-icon-textfield outlined"
-          label="firstName"
-          name="firstName"
-          variant="outlined"
-          color="#440a67"
-          required="true"
-          onChange={handleChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
+            endAdornment: (
+              <InputAdornment position="end">
+                <SpeechRec id="email" handleChange={handleChange} />
               </InputAdornment>
             ),
           }}
@@ -78,17 +71,47 @@ const Login = () => {
 
         <TextField
           className={classes.margin}
-          id="input-with-icon-textfield outlined"
+          // id="input-with-icon-textfield outlined"
+          id="firstname"
+          label="firstName"
+          name="firstName"
+          variant="outlined"
+          color="#440a67"
+          required="true"
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <SpeechRec id="email" handleChange={handleChange} />
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        <TextField
+          className={classes.margin}
+          // id="input-with-icon-textfield outlined"
+          id="lastName"
           label="lastName"
           name="lastName"
           variant="outlined"
           color="#440a67"
           required="true"
-          onChange={handleChange}
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
                 <AccountCircle />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <SpeechRec id="email" handleChange={handleChange} />
               </InputAdornment>
             ),
           }}
@@ -113,12 +136,7 @@ const Login = () => {
           }}
         />
 
-        <Button
-          className="register"
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
+        <Button variant="contained" color="primary" type="submit">
           Sign UP
         </Button>
       </form>
