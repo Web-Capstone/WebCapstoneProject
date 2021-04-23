@@ -1,5 +1,3 @@
-
-
 .registerForm {
   margin-top: 3%;
   text-align: center;
@@ -15,23 +13,6 @@
 
 .registerForm Button {
   display: block;
-  padding: 10px;
-  margin-left: 25%;
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-.registerForm .register {
-  background-color: #1d8b5a;
-  margin-top: 20px;
-}
-
-.registerForm .loginGoogle{
-  background-color: #1d8b5a;
-  color:white;
-  display: block;
-  width: fit-content;
-  text-align: center;
-  margin: auto;
-  margin-top: 20px;
+  margin-left: 24px;
+  padding: 10px 50px;
 }

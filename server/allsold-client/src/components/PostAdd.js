@@ -13,7 +13,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
 import Typography from "@material-ui/core/Typography";
-import { Autocomplete } from "@material-ui/lab";
+// import { Autocomplete } from "@material-ui/lab";
 import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
