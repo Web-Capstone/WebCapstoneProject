@@ -10,10 +10,11 @@ import Register from "./components/Register.js";
 import Products from "./components/Products";
 import ProductDetails from "./components/productDetails";
 import { useDispatch } from "react-redux";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { theme } from "./styles/UniversalTheme";
 
 import { getAllProducts, getExtraProducts } from "./actions/index";
 
-import "./App.css";
 import PostAdd from "./components/PostAdd";
 
 function App(props) {
@@ -29,16 +30,18 @@ function App(props) {
   return (
     <div className="app">
       <BrowserRouter>
-        <Header />
-        {/* <Container maxwidth="md"> */}
-        <Route path="/PostAdd" component={PostAdd} />
-        <Route path="/Login" component={Login} />
-        <Route path="/Register" component={Register} />
-        <Route path="/products" component={Products} />
-        <Route path="/productDetails/:id" component={ProductDetails} />
-        <Route path="/" exact component={Home} />
+        <ThemeProvider theme={theme}>
+          <Header />
+          {/* <Container maxwidth="md"> */}
+          <Route path="/PostAdd" component={PostAdd} />
+          <Route path="/Login" component={Login} />
+          <Route path="/Register" component={Register} />
+          <Route path="/products" component={Products} />
+          <Route path="/productDetails/:id" component={ProductDetails} />
+          <Route path="/" exact component={Home} />
 
-        {/* </Container> */}
+          {/* </Container> */}
+        </ThemeProvider>
       </BrowserRouter>
     </div>
   );

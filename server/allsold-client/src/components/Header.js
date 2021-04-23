@@ -28,17 +28,6 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "../styles/Header.css";
 import Billing from "./Billing";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#293241",
-    },
-    secondary: {
-      main: "#ee6c4d",
-    },
-  },
-});
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -132,42 +121,41 @@ function Header(props) {
 
   return (
     <div className={classes.root}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+      <CssBaseline />
 
-        <AppDrawer open={open}>
-          <ClickAwayListener onClickAway={handleClickAway}>
-            <List className={classes.drawer}>
-              {itemList.map((item, index) => {
-                const { text } = item;
-                return (
-                  <ListItem button key={text}>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                );
-              })}
-            </List>
-          </ClickAwayListener>
-        </AppDrawer>
+      <AppDrawer open={open}>
+        <ClickAwayListener onClickAway={handleClickAway}>
+          <List className={classes.drawer}>
+            {itemList.map((item, index) => {
+              const { text } = item;
+              return (
+                <ListItem button key={text}>
+                  <ListItemText primary={text} />
+                </ListItem>
+              );
+            })}
+          </List>
+        </ClickAwayListener>
+      </AppDrawer>
 
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              onClick={() => setOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div className="headerInfo">
-              <div className="logo">
-                <img src={Logo} alt="logo" onClick={onImgClick} />
-              </div>
-              <div className="sell">
-                <Billing />
-                {/* <Button
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setOpen(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <div className="headerInfo">
+            <div className="logo">
+              <img src={Logo} alt="logo" onClick={onImgClick} />
+            </div>
+            <div className="sell">
+              <Billing />
+              {/* <Button
                   startIcon={<PostAddIcon />}
                   href="/PostAdd"
                   variant="contained"
@@ -175,32 +163,31 @@ function Header(props) {
                 >
                   Post Add
                 </Button> */}
-              </div>
-              <div>
-                {!user && !props.googleAuthReducer ? (
-                  <Button
-                    href="/Login"
-                    className={classes.login}
-                    variant="contained"
-                    startIcon={<VpnKeyIcon />}
-                  >
-                    Login
-                  </Button>
-                ) : (
-                  <Button
-                    href="/api/logout"
-                    variant="contained"
-                    className={classes.login}
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </Button>
-                )}
-              </div>
             </div>
-          </Toolbar>
-        </AppBar>
-      </ThemeProvider>
+            <div>
+              {!user && !props.googleAuthReducer ? (
+                <Button
+                  href="/Login"
+                  className={classes.login}
+                  variant="contained"
+                  startIcon={<VpnKeyIcon />}
+                >
+                  Login
+                </Button>
+              ) : (
+                <Button
+                  href="/api/logout"
+                  variant="contained"
+                  className={classes.login}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              )}
+            </div>
+          </div>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 }

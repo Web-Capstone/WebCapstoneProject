@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3),
     width: "75ch",
   },
+  regButton: {
+    backgroundColor: "black",
+    "&:hover": { backgroundColor: "red" },
+  },
 }));
 
 const initialState = { email: "", firstName: "", lastName: "", password: "" };
@@ -136,7 +140,12 @@ const Login = () => {
           }}
         />
 
-        <Button variant="contained" color="primary" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.regButton}
+          type="submit"
+        >
           Sign UP
         </Button>
       </form>
