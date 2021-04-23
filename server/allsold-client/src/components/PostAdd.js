@@ -60,6 +60,7 @@ export default function PostAdd() {
     <div>
       <Typography variant="h4" className={classes.heading}>
         POST YOUR ADD
+        {suygs}
       </Typography>
       <List className={classes.root}>
         <div className={classes.left}></div>
