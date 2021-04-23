@@ -12,8 +12,7 @@ import { connect, useDispatch } from "react-redux";
 import { Container } from "@material-ui/core";
 import { useHistory } from "react-router";
 import Footer from "./Footer";
-import MicIcon from "@material-ui/icons/Mic";
-import MicOffIcon from "@material-ui/icons/MicOff";
+
 import SpeechRec from "./SpeechRec";
 
 const useStyles = makeStyles((theme) => ({
