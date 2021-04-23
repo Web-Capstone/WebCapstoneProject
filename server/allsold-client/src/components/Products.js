@@ -14,6 +14,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "./ProductCard";
@@ -120,7 +121,12 @@ function Products() {
               />
             ))
           ) : (
-            <CircularProgress />
+            <Skeleton
+              variant="rect"
+              width={210}
+              height={218}
+              animation="wave"
+            />
           )}
         </div>
 
@@ -128,35 +134,33 @@ function Products() {
         <div className="related_product_cards">
           {console.log("Extra Products ", getExtraProducts)}
 
-          {getExtraProducts ? (
-            getExtraProducts.map((data) => (
-              <RelatedProductCards
-                key={data._id}
-                productId={data._id}
-                productDescription={data.productDescription}
-                productTitle={data.prouctTitle}
-                productImg={data.productImg}
-                productPrice={data.productPrice}
-                productName={data.productName}
-              />
-              // <RelatedProductCards
-              //   key={edata._id}
-              //   productId={edata._id}
-              //   productDescription={edata.productDescription}
-              //   productTitle={edata.prouctTitle}
-              //   productImg={edata.productImg}
-              //   productPrice={edata.productPrice}
-              //   productName={edata.productName}
-              // />
+          {getExtraProducts
+            ? getExtraProducts.map((data) => (
+                <RelatedProductCards
+                  key={data._id}
+                  productId={data._id}
+                  productDescription={data.productDescription}
+                  productTitle={data.prouctTitle}
+                  productImg={data.productImg}
+                  productPrice={data.productPrice}
+                  productName={data.productName}
+                />
+                // <RelatedProductCards
+                //   key={edata._id}
+                //   productId={edata._id}
+                //   productDescription={edata.productDescription}
+                //   productTitle={edata.prouctTitle}
+                //   productImg={edata.productImg}
+                //   productPrice={edata.productPrice}
+                //   productName={edata.productName}
+                // />
 
-              // <div key={edata._id}>
-              //   <h1>hhhh</h1>
-              //   <img src={edata.productImg} />
-              // </div>
-            ))
-          ) : (
-            <CircularProgress />
-          )}
+                // <div key={edata._id}>
+                //   <h1>hhhh</h1>
+                //   <img src={edata.productImg} />
+                // </div>
+              ))
+            : null}
         </div>
       </div>
     </div>

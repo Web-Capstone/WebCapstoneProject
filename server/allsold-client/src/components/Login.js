@@ -57,7 +57,6 @@ const Login = (props) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
@@ -119,7 +118,8 @@ const Login = (props) => {
           <Button variant="contained" color="primary" type="submit">
             Login
           </Button>
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+
+          <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
             <Alert onClose={handleClose} severity="success">
               Succesfully Loged In
             </Alert>
