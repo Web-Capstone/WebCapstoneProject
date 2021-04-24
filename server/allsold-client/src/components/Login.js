@@ -55,7 +55,6 @@ const Login = () => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
