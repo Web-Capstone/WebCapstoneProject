@@ -10,6 +10,8 @@ import ProductDetails from "./components/productDetails";
 import { useDispatch } from "react-redux";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./styles/UniversalTheme";
+import About from "./components/About";
+import Margin from "./components/Margin";
 
 import {
   getAllProducts,
@@ -33,13 +35,37 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <Header />
-          <Route path="/PostAdd" component={PostAdd} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Register" component={Register} />
-          <Route path="/products" component={Products} />
-          <Route path="/productDetails/:id" component={ProductDetails} />
-          <Route path="/" exact component={Home} />
+          <Route
+            path="/PostAdd"
+            component={() => <Margin component={<PostAdd />} />}
+          />
+          <Route
+            path="/Login"
+            component={() => <Margin component={<Login />} />}
+          />
+          {/* <Route path="/Login" component={Login} /> */}
+
+          <Route
+            path="/Register"
+            component={() => <Margin component={<Register />} />}
+          />
+          <Route
+            path="/products"
+            component={() => <Margin component={<Products />} />}
+          />
+          <Route
+            path="/productDetails/:id"
+            component={() => <Margin component={<ProductDetails />} />}
+          />
+          <Route
+            path="/"
+            exact
+            component={() => <Margin component={<Home />} />}
+          />
+          <Route
+            path="/about"
+            component={() => <Margin component={<About />} />}
+          />
         </ThemeProvider>
       </BrowserRouter>
     </div>
