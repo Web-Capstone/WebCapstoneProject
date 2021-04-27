@@ -27,6 +27,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import "../styles/Header.css";
 import Billing from "./Billing";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,6 +78,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 function Header(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -105,7 +111,10 @@ function Header(props) {
     setOpen(false);
   };
 
+  const [snackbarOpen, snackbarSetOpen] = useState(false);
+
   const handleLogout = () => {
+    snackbarSetOpen(true);
     dispatch(logoutUser(history));
     setUser(null);
   };
@@ -114,14 +123,16 @@ function Header(props) {
     history.push("/");
   };
 
-  // store.subscribe(() => {
-  //   console.log("STORE CHANGED");
-  // });
+  const handleClose = (event, reason) => {
+    snackbarSetOpen(true);
+  };
 
-  // useEffect(() => {
+  const [state, setState] = React.useState({
+    vertical: "top",
+    horizontal: "center",
+  });
 
-  //   setUser(JSON.parse(localStorage.getItem("profile")));
-  // }, []);
+  const { vertical, horizontal } = state;
 
   return (
     <div className={classes.root}>
@@ -171,7 +182,7 @@ function Header(props) {
             <div>
               {!user && !props.googleAuthReducer ? (
                 <Button
-                  href="/Login"
+                  href={"/login"}
                   className={classes.login}
                   variant="contained"
                   startIcon={<VpnKeyIcon />}
@@ -189,6 +200,17 @@ function Header(props) {
                 </Button>
               )}
             </div>
+            <Snackbar
+              open={snackbarOpen}
+              autoHideDuration={6000}
+              onClose={handleClose}
+              anchorOrigin={{ vertical, horizontal }}
+              key={vertical + horizontal}
+            >
+              <Alert onClose={handleClose} severity="info">
+                Successfully Log Out
+              </Alert>
+            </Snackbar>
           </div>
         </Toolbar>
       </AppBar>

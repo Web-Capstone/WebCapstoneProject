@@ -15,9 +15,14 @@ import {
   getAllProducts,
   getExtraProducts,
   fetchGoogleUser,
+  getSingleProduct,
+  loginUser,
 } from "./actions/index";
 
 import PostAdd from "./components/PostAdd";
+import Cars from "./components/Cars";
+import Mobiles from "./components/Mobiles";
+import Electronics from "./components/Electronics";
 
 function App() {
   const history = useHistory();
@@ -27,6 +32,7 @@ function App() {
     dispatch(fetchGoogleUser());
     dispatch(getExtraProducts());
     dispatch(getAllProducts());
+    //dispatch(getSingleProduct());
   }, []);
 
   return (
@@ -38,6 +44,9 @@ function App() {
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
           <Route path="/products" component={Products} />
+          <Route path="/product/cars" component={Cars} />
+          <Route path="/product/mobiles" component={Mobiles} />
+          <Route path="/product/electronics" component={Electronics} />
           <Route path="/productDetails/:id" component={ProductDetails} />
           <Route path="/" exact component={Home} />
         </ThemeProvider>

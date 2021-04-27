@@ -15,6 +15,9 @@ import "../styles/Register.css";
 import SpeechRec from "./SpeechRec";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingTop: "70px",
+  },
   margin: {
     margin: theme.spacing(3),
     width: "75ch",
@@ -47,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <Container maxwidth="md">
+    <Container maxwidth="md" className={classes.root}>
       <form className="registerForm" onSubmit={handleSubmit}>
         <TextField
           className={classes.margin}

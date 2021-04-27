@@ -1,5 +1,6 @@
 export const FETCH_GOOGLE_USER = "FETCH_GOOGLE_USER";
 export const AUTH = "AUTH";
+export const AUTH_FAIL = "AUTH_FAIL";
 export const LOGOUT = "LOGOUT";
 
 export const GET_ERRORS = "GET_ERRORS";

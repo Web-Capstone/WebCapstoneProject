@@ -13,13 +13,7 @@ API.interceptors.request.use((req) => {
 });
 
 // Route to login User
-export const login = (formData) =>
-  API.post("users/login", formData)
-  .catch((err) => {
-    if (err.response) {
-      console.log(err.response.data);
-    }
-  });
+export const login = (formData) => API.post("users/login", formData);
 // Route to Register User
 export const register = (formData) => API.post("users/register", formData);
 // Route to get All Products

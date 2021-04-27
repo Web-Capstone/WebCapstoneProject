@@ -7,7 +7,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import Button from "@material-ui/core/Button";
 import "../styles/Register.css";
 import { loginUser } from "../actions/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@material-ui/core";
 import { useHistory } from "react-router";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     maxHeight: "100vh",
+  },
+
+  grid: {
+    paddingTop: "70px",
   },
 }));
 
@@ -44,7 +48,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData, history));
-    setOpen(true);
+
+    setTimeout(() => {
+      setOpen(true);
+    }, 850);
   };
 
   const handleChange = (id, value) => {
@@ -62,8 +69,18 @@ const Login = () => {
     window.location.href = "/oauth20/google";
   };
 
+  const [state, setState] = React.useState({
+    vertical: "top",
+    horizontal: "center",
+  });
+
+  const { vertical, horizontal } = state;
+
+  const LoginConfirm = useSelector((state) => state.authReducer.login);
+  const LoginError = useSelector((state) => state.authReducer.authData);
+
   return (
-    <Grid container>
+    <Grid container className={classes.grid}>
       <Grid item xs={12}>
         <form
           className="registerForm"
@@ -84,6 +101,7 @@ const Login = () => {
                 className={classes.margin}
                 autoFocus="true"
                 id="email"
+                type="email"
                 name="email"
                 label="E-mail"
                 variant="outlined"
@@ -163,10 +181,23 @@ const Login = () => {
             </Grid>
           </Grid>
         </form>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-            Succesfully Loged In
-          </Alert>
+
+        <Snackbar
+          open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical, horizontal }}
+          key={vertical + horizontal}
+        >
+          {LoginConfirm ? (
+            <Alert onClose={handleClose} severity="success">
+              Successfully Log in
+            </Alert>
+          ) : (
+            <Alert onClose={handleClose} severity="error">
+              {LoginError}
+            </Alert>
+          )}
         </Snackbar>
       </Grid>
 

@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   FETCH_GOOGLE_USER,
   AUTH,
+  AUTH_FAIL,
   LOGOUT,
   GET_ALL_PRODUCTS,
   GET_SINGLE_PRODUCT,
@@ -19,11 +20,12 @@ export const loginUser = (formData, history) => async (dispatch) => {
   try {
     const { data } = await api.login(formData);
     dispatch({ type: AUTH, data });
-    history.push("/");
-    // window.location.reload();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
+    setTimeout(() => {
+      history.push("/");
+      window.location.reload();
+    }, 800);
+  } catch (err) {
+    dispatch({ type: AUTH_FAIL, err });
   }
 };
 

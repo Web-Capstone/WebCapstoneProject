@@ -19,6 +19,7 @@ import StarIcon from "@material-ui/icons/StarBorder";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Footer from "./Footer";
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -199,6 +200,7 @@ const tiers = [
 
 function Home() {
   const classes = useStyles();
+
   return (
     <div>
       <ThemeProvider theme={theme}>

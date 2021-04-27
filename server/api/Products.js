@@ -25,6 +25,17 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+//Update a Product
+router.put("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const updateProduct = await Products.findByIdAndUpdate(id);
+    res.json(updateProduct);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // Post Add
 router.post("/", async (req, res, next) => {
   try {

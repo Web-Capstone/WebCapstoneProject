@@ -1,23 +1,8 @@
 .products_sectionRow {
-  display: flex;
-  max-width: 200px;
-  align-items: center;
-  margin-left: 8px;
-  cursor: pointer;
-  padding-left: 10px;
-  font-weight: 400;
-  border-radius: 10px;
-  color: rgb(83, 83, 83);
+  padding-left: 10px !important;
 }
 
-.products_sectionRow > p {
-  margin-left: 10px;
-  font-size: 18px;
-  color: black;
-}
-
-.products_sectionRow:hover {
-  background-color: rgb(197, 195, 195);
-  font-weight: 800;
-  color: black;
+.products_sectionRow .MuiTypography-body1 {
+  font-weight: 400 !important;
+  font-size: 1.2rem !important;
 }

@@ -33,7 +33,7 @@ const ProductDetails = () => {
         <div className="product_details_left">
           <div className="product_img">
             <img
-              src={data.productImg}
+              src={data?.productImg}
               height="100%"
               width="100%"
               alt="Product image"
@@ -48,7 +48,7 @@ const ProductDetails = () => {
             </div>
             <div className="product_description">
               <h1 className="heading">Description</h1>
-              <h2 className="description_info">{data.productDescription}</h2>
+              <h2 className="description_info">{data?.productDescription}</h2>
             </div>
           </div>
           <div className="related_ads">
@@ -72,7 +72,7 @@ const ProductDetails = () => {
           <div className="product_info">
             <div className="product_info_price">
               <h2 className="price_info">
-                $ <span>{data.productPrice}</span>
+                $ <span>{data?.productPrice}</span>
               </h2>
               <span className="social_icons">
                 <IconButton>
@@ -84,7 +84,7 @@ const ProductDetails = () => {
               </span>
             </div>
             <div className="product_info_tagline">
-              <h2>{data.prouctTitle}</h2>
+              <h2>{data?.prouctTitle}</h2>
             </div>
             <div className="product_info_others">
               <h2>location</h2>
