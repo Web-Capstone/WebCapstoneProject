@@ -19,6 +19,7 @@ import StarIcon from "@material-ui/icons/StarBorder";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Footer from "./Footer";
+import Billing from "./Billing";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -168,7 +169,8 @@ const tiers = [
       "Email support",
     ],
     buttonText: "Sign up for free",
-    buttonVariant: "outlined",
+    buttonVariant: "contained",
+    href: "/register",
   },
   {
     title: "ProSeller",
@@ -180,8 +182,9 @@ const tiers = [
       "Help center access",
       "Priority email support",
     ],
-    buttonText: "Get started",
+    buttonText: "Purchase Plan",
     buttonVariant: "contained",
+    buttonComponent: Billing,
   },
   {
     title: "Corporate Seller",
@@ -194,6 +197,7 @@ const tiers = [
     ],
     buttonText: "Contact us",
     buttonVariant: "outlined",
+    buttonComponent: Billing,
   },
 ];
 
@@ -201,151 +205,146 @@ function Home() {
   const classes = useStyles();
   return (
     <div>
-      <ThemeProvider theme={theme}>
-        {/* <div className="bannerImage"></div>
+      {/* <div className="bannerImage"></div>
       <h2 className="homePageHeading">Sell & Buy at one Place</h2> */}
-        <Box className={classes.hero}>
-          <Box>
-            <Typography variant="h3">
-              One Stop Destination for all your shopping needs
-            </Typography>
+      <Box className={classes.hero}>
+        <Box>
+          <Typography variant="h3">
+            One Stop Destination for all your shopping needs
+          </Typography>
 
-            <Button
-              className={classes.explore}
-              variant="contained"
-              color="primary"
-              size="large"
-              href="/products"
-            >
-              Explore
-            </Button>
-          </Box>
+          <Button
+            className={classes.explore}
+            variant="contained"
+            color="primary"
+            size="large"
+            href="/products"
+          >
+            Explore
+          </Button>
         </Box>
+      </Box>
 
-        <Container maxwidth="lg" className={classes.productContainer}>
-          <Typography
-            variant="h3"
-            className={classes.productTitle}
-            align="center"
-          >
-            Latest Products at Glance
-          </Typography>
-          <Grid container spacing={4}>
-            {cCards.map((card) => (
-              <Grid item key={card.title} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={card.image}
-                    title="image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5">
-                      {card.title}
-                    </Typography>
-                    <Typography>{card.description}</Typography>
-                    <Typography>Price: {card.price}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      <AddShoppingCartIcon />
-                    </Button>
-                    <Button size="small" color="secondary">
-                      <FavoriteBorderIcon />
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-        <Container
-          maxWidth="sm"
-          component="main"
-          className={classes.heroContent}
+      <Container maxwidth="lg" className={classes.productContainer}>
+        <Typography
+          variant="h3"
+          className={classes.productTitle}
+          align="center"
         >
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            Pricing
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
-            Now get most out of your advertisements by picking our plans that
-            are perfectly curated for all types of individuals
-          </Typography>
-        </Container>
+          Latest Products at Glance
+        </Typography>
+        <Grid container spacing={4}>
+          {cCards.map((card) => (
+            <Grid item key={card.title} xs={12} sm={6} md={4}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={card.image}
+                  title="image title"
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5">
+                    {card.title}
+                  </Typography>
+                  <Typography>{card.description}</Typography>
+                  <Typography>Price: {card.price}</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    <AddShoppingCartIcon />
+                  </Button>
+                  <Button size="small" color="secondary">
+                    <FavoriteBorderIcon />
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+      <Container maxWidth="sm" component="main" className={classes.heroContent}>
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          color="textPrimary"
+          gutterBottom
+        >
+          Pricing
+        </Typography>
+        <Typography
+          variant="h5"
+          align="center"
+          color="textSecondary"
+          component="p"
+        >
+          Now get most out of your advertisements by picking our plans that are
+          perfectly curated for all types of individuals
+        </Typography>
+      </Container>
 
-        <Container maxWidth="md" component="main">
-          <Grid container spacing={5} alignItems="flex-end">
-            {tiers.map((tier) => (
-              <Grid
-                item
-                key={tier.title}
-                xs={12}
-                sm={tier.title === "Enterprise" ? 12 : 6}
-                md={4}
-              >
-                <Card className={classes.priceCard}>
-                  <CardHeader
-                    title={tier.title}
-                    subheader={tier.subheader}
-                    titleTypographyProps={{ align: "center" }}
-                    subheaderTypographyProps={{ align: "center" }}
-                    action={tier.title === "ProSeller" ? <StarIcon /> : null}
-                    className={classes.cardHeader}
-                  />
-                  <CardContent>
-                    <div className={classes.cardPricing}>
+      <Container maxWidth="md" component="main">
+        <Grid container spacing={5} alignItems="flex-end">
+          {tiers.map((tier) => (
+            <Grid
+              item
+              key={tier.title}
+              xs={12}
+              sm={tier.title === "Enterprise" ? 12 : 6}
+              md={4}
+            >
+              <Card className={classes.priceCard}>
+                <CardHeader
+                  title={tier.title}
+                  subheader={tier.subheader}
+                  titleTypographyProps={{ align: "center" }}
+                  subheaderTypographyProps={{ align: "center" }}
+                  action={tier.title === "ProSeller" ? <StarIcon /> : null}
+                  className={classes.cardHeader}
+                />
+                <CardContent>
+                  <div className={classes.cardPricing}>
+                    <Typography component="h2" variant="h3" color="textPrimary">
+                      ${tier.price}
+                    </Typography>
+                    <Typography variant="h6" color="textSecondary">
+                      /mo
+                    </Typography>
+                  </div>
+                  <ul>
+                    {tier.description.map((line) => (
                       <Typography
-                        component="h2"
-                        variant="h3"
-                        color="textPrimary"
+                        component="li"
+                        variant="subtitle1"
+                        align="center"
+                        key={line}
                       >
-                        ${tier.price}
+                        {line}
                       </Typography>
-                      <Typography variant="h6" color="textSecondary">
-                        /mo
-                      </Typography>
-                    </div>
-                    <ul>
-                      {tier.description.map((line) => (
-                        <Typography
-                          component="li"
-                          variant="subtitle1"
-                          align="center"
-                          key={line}
-                        >
-                          {line}
-                        </Typography>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      fullWidth
-                      variant={tier.buttonVariant}
-                      color="secondary"
-                      // className={classes.cssRoot}
-                    >
-                      {tier.buttonText}
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-        <Footer />
-      </ThemeProvider>
+                    ))}
+                  </ul>
+                </CardContent>
+
+                {tier.buttonComponent ? (
+                  <tier.buttonComponent />
+                ) : (
+                  <Button
+                    fullWidth
+                    variant={tier.buttonVariant}
+                    color="primary"
+                    href={tier.href}
+
+                    // className={classes.cssRoot}
+                  >
+                    {tier.buttonText}
+                  </Button>
+                )}
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+      <Footer />
     </div>
   );
 }

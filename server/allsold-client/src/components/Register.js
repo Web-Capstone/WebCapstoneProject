@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   regButton: {
     backgroundColor: "black",
-    "&:hover": { backgroundColor: "red" },
+    "&:hover": { backgroundColor: "rgba(0,0,0,0.8)", color: "white" },
   },
 }));
 

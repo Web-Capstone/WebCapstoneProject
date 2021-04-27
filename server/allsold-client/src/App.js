@@ -20,6 +20,7 @@ import {
 } from "./actions/index";
 
 import PostAdd from "./components/PostAdd";
+import Contact from "./components/Contact";
 
 function App() {
   const history = useHistory();
@@ -65,6 +66,11 @@ function App() {
           <Route
             path="/about"
             component={() => <Margin component={<About />} />}
+          />
+
+          <Route
+            path="/contact"
+            component={() => <Margin component={<Contact />} />}
           />
         </ThemeProvider>
       </BrowserRouter>

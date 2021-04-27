@@ -61,9 +61,9 @@ function SpeechRec(props) {
   return (
     <Button onClick={() => setIsListening((prevState) => !prevState)}>
       {isListening ? (
-        <MicIcon color="primary" />
+        <MicIcon style={{ fill: "red" }} />
       ) : (
-        <MicOffIcon color="secondary" />
+        <MicOffIcon color="primary" />
       )}
     </Button>
   );
