@@ -15,7 +15,12 @@ class Billing extends Component {
           token={(token) => this.props.handleToken(token)}
           stripeKey={process.env.REACT_APP_STRIPE_KEY}
         >
-          <Button variant="contained" color="secondary">
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            style={{ width: "100%" }}
+          >
             Purchase Plan
           </Button>
         </StripeCheckout>
