@@ -69,7 +69,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 0",
   },
   productTitle: {
-    fontWeight: 800,
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
@@ -229,11 +228,13 @@ function Home() {
 
       <Container maxwidth="lg" className={classes.productContainer}>
         <Typography
-          variant="h3"
+          component="h1"
+          variant="h2"
           className={classes.productTitle}
           align="center"
+          color="textPrimary"
         >
-          Latest Products at Glance
+          Featured Products
         </Typography>
         <Grid container spacing={4}>
           {cCards.map((card) => (
