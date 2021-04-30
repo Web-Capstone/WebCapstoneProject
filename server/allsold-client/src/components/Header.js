@@ -14,6 +14,7 @@ import {
   ListItemText,
   ClickAwayListener,
   Grid,
+  Divider,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -32,6 +33,13 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
+  appDrawer: {
+    backgroundColor: "#293241",
+
+    width: 250,
+
+    height: "100%",
+  },
   root: {
     flexGrow: 1,
     width: "100%",
@@ -64,9 +72,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  drawer: {
-    width: 250,
-  },
+
   postAdd: {
     margin: "5px",
     backgroundColor: "#09628f",
@@ -110,6 +116,11 @@ function Header(props) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const userFirstName = user?.result.firstName;
   const itemList = [
+    {
+      text: "AllSold",
+      link: "/",
+    },
+
     {
       text: user ? "Hello " + userFirstName : "Hello Guest ",
     },
@@ -160,18 +171,23 @@ function Header(props) {
       <CssBaseline />
       <AppDrawer open={open}>
         <ClickAwayListener onClickAway={handleClickAway}>
-          <List className={classes.drawer}>
+          <List className={classes.drawer} className={classes.appDrawer}>
             {itemList.map((item, index) => {
               const { text, link } = item;
               return (
                 <Link
                   to={link}
                   underline="none"
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    marginBottom: "10px",
+                  }}
                 >
                   <ListItem button key={text}>
                     <ListItemText primary={text} />
                   </ListItem>
+                  <Divider style={{ background: "white" }} />
                 </Link>
               );
             })}
