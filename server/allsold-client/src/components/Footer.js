@@ -69,15 +69,15 @@ const footers = [
     title: "Explore",
     description: [
       {
-        href: "/postadd/mobile",
+        href: "/product/mobiles",
         label: "Mobie Phones",
       },
       {
-        href: "/postadd/Cars",
+        href: "/product/cars",
         label: "Cars",
       },
       {
-        href: "/postadd/Electronics",
+        href: "/product/electronics",
         label: "Electronics",
       },
     ],
