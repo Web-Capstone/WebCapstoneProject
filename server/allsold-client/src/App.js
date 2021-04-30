@@ -38,7 +38,6 @@ function App() {
     dispatch(fetchGoogleUser());
     dispatch(getExtraProducts());
     dispatch(getAllProducts());
-    //dispatch(getSingleProduct());
   }, []);
 
   return (

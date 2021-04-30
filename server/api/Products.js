@@ -56,32 +56,44 @@ router.put("/:id", async (req, res, next) => {
 });
 
 // Post Add
-// router.post("/", async (req, res, next) => {
-//   try {
-//     const {
-//       productName,
-//       prouctTitle,
-//       productDescription,
-//       productImg,
-//       productRating,
-//       productPrice,
-//       productDetails,
-//     } = req.body;
+router.post("/", async (req, res, next) => {
+  try {
+    const {
+      productName,
+      prouctTitle,
+      productDescription,
+      productImg,
+      productRating,
+      productPrice,
+      productDetails,
+      productCarBrand,
+      productCarYear,
+      productCarFuelType,
+      productCarTransmission,
+      productCarKm,
+      productCarNumberOfOwners,
+    } = req.body;
 
-//     const result = await Products.create({
-//       productName,
-//       prouctTitle,
-//       productDescription,
-//       productImg,
-//       productRating,
-//       productPrice,
-//       productDetails,
-//     });
+    const result = await Products.create({
+      productName,
+      prouctTitle,
+      productDescription,
+      productImg,
+      productRating,
+      productPrice,
+      productDetails,
+      productCarBrand,
+      productCarYear,
+      productCarFuelType,
+      productCarTransmission,
+      productCarKm,
+      productCarNumberOfOwners,
+    });
 
-//     res.status(200).json({ result });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+    res.status(200).json({ result });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = router;

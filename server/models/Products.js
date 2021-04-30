@@ -12,10 +12,10 @@ const requiredNumber = {
 };
 
 const ProductSchema = new Schema({
-  productName: requiredString,
-  prouctTitle: requiredString,
+  productName: String,
+  prouctTitle: String,
   productDescription: String,
-  productImg: requiredString,
+  productImg: String,
   productRating: {
     type: Number,
     min: 0,
@@ -24,7 +24,13 @@ const ProductSchema = new Schema({
   },
   productPrice: requiredNumber,
   productDetails: String,
-  productCategory: String,
+  productCategory: { type: String, default: "" },
+  productCarBrand: String,
+  productCarYear: String,
+  productCarFuelType: String,
+  productCarTransmission: String,
+  productCarKm: Number,
+  productCarNumberOfOwners: Number,
 });
 
 const Products = mongoose.model("products", ProductSchema); // model gives us methods like find,create
