@@ -69,7 +69,7 @@ export default function PostAdd() {
         <ListItem
           button
           onClick={() => carsSetOpen(!carsOpen)}
-          onClick={() => history.push("/PostAdd/Cars")}
+          onClick={() => history.push("/PostAdd/Car")}
         >
           <svg
             width="30px"
@@ -105,44 +105,30 @@ export default function PostAdd() {
         </ListItem>
         <Collapse in={MobileOpen} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
+            <ListItem
+              button
+              className={classes.nested}
+              onClick={() => history.push("/PostAdd/Mobile")}
+            >
               <ListItemText primary="Mobile Phones" />
             </ListItem>
-            <ListItem button className={classes.nested}>
+            <ListItem
+              button
+              onClick={() => history.push("/PostAdd/Mobile")}
+              className={classes.nested}
+            >
               <ListItemText primary="Accessories" />
             </ListItem>
-            <ListItem button className={classes.nested}>
+            <ListItem
+              button
+              onClick={() => history.push("/PostAdd/Mobile")}
+              className={classes.nested}
+            >
               <ListItemText primary="Tablets" />
             </ListItem>
           </List>
         </Collapse>
-        <ListItem button onClick={() => PropertiesSetOpen(!PropertiesOpen)}>
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 1024 1024"
-            data-aut-id="icon"
-            class=""
-            fill-rule="evenodd"
-          >
-            <path
-              class="rui-vUQO_"
-              d="M356.848 85.333l271.515 179.315v174.318h248.824l61.479 60.925v377.85l-61.479 60.925h-730.376l-61.479-60.925v-613.093l271.515-179.315zM356.848 177.586l-193.939 128.192v540.060l16.097 15.952h100.267v-192.192h155.152v192.192h116.364v-556.012l-193.939-128.192zM844.994 515.844h-216.63v345.946h216.63l16.097-15.952v-314.042l-16.097-15.952zM783.316 640v85.333h-85.333v-85.333h85.333zM352 432c29.455 0 53.333 23.878 53.333 53.333s-23.878 53.333-53.333 53.333c-29.455 0-53.333-23.878-53.333-53.333s23.878-53.333 53.333-53.333z"
-            ></path>
-          </svg>
-          <p className={classes.listItem}>Properties</p>
-          {PropertiesOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={PropertiesOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Houses & Apartments" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="PG & Guest House" />
-            </ListItem>
-          </List>
-        </Collapse>
+
         <ListItem button onClick={() => ElectronicsSetOpen(!ElectronicsOpen)}>
           <svg
             width="30px"
@@ -162,101 +148,26 @@ export default function PostAdd() {
         </ListItem>
         <Collapse in={ElectronicsOpen} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
+            <ListItem
+              button
+              onClick={() => history.push("/PostAdd/Electronics")}
+              className={classes.nested}
+            >
               <ListItemText primary="TV's" />
             </ListItem>
-            <ListItem button className={classes.nested}>
+            <ListItem
+              button
+              onClick={() => history.push("/PostAdd/Electronics")}
+              className={classes.nested}
+            >
               <ListItemText primary="Computers & Laptops" />
             </ListItem>
-            <ListItem button className={classes.nested}>
+            <ListItem
+              button
+              onClick={() => history.push("/PostAdd/Electronics")}
+              className={classes.nested}
+            >
               <ListItemText primary="Games & Entertainment" />
-            </ListItem>
-          </List>
-        </Collapse>
-        <ListItem button onClick={() => FurnitureSetOpen(!FurnitureOpen)}>
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 1024 1024"
-            data-aut-id="icon"
-            class=""
-            fill-rule="evenodd"
-          >
-            <path
-              class="rui-vUQO_"
-              d="M268.748 91.803l-70.244 96.818v124.45l-24.559-0.152-82.195 104.783v430.333h152.539v75.637h91.975v-75.637h333.816v75.637h91.975v-75.637h170.135v-436.888l-82.295-97.219h-4.335v-117.692l-78.665-104.431h-498.206zM429.605 396.172l-79.319-82.195-59.755-0.353v-95.152l25.112-34.692h405.422l32.524 43.213v86.934h-87.64l-65.504 77.403v75.284h-170.792v-70.444zM183.829 449.472l34.743-44.274 92.48 0.505 26.626 27.632v125.207h354.845v-133.528l16.137-19.111h98.633l32.977 38.93v311.176h-656.49v-306.588z"
-            ></path>
-          </svg>
-          <p className={classes.listItem}>Furniture</p>
-          {FurnitureOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={FurnitureOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Sofa & Dining" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Beds & Wardrobes" />
-            </ListItem>
-          </List>
-        </Collapse>
-        <ListItem button onClick={() => FashionSetOpen(!FashionOpen)}>
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 1024 1024"
-            data-aut-id="icon"
-            class=""
-            fill-rule="evenodd"
-          >
-            <path
-              class="rui-vUQO_"
-              d="M708.012 340.654v471.101h-391.011v-471.101h-116.125l48.317-144.445 32.889-26.596h106.075c17.154 51.007 65.474 87.906 122.014 87.906s104.908-36.899 122.062-87.906h101.002l28.423 17.258 56.135 153.784h-109.781zM827.639 132.662l-71.867-43.647h-197.179l-0.252 40.097c-0.204 26.393-21.824 47.809-48.165 47.809-26.393 0-47.964-21.468-48.116-47.861l-0.304-39.993h-208.092l-73.39 59.282-91.204 272.855h147.339v471.101h552.103v-471.101h144.397l-105.212-288.538z"
-            ></path>
-          </svg>
-          <p className={classes.listItem}>Fashion</p>
-          {FashionOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={FashionOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Mens" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Womens" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Kids" />
-            </ListItem>
-          </List>
-        </Collapse>
-        <ListItem button onClick={() => ServicesSetOpen(!ServicesOpen)}>
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 1024 1024"
-            data-aut-id="icon"
-            class=""
-            fill-rule="evenodd"
-          >
-            <path
-              class="rui-vUQO_"
-              d="M845.419 795.973l-18.078 18.059h-643.422l-18.078-18.059v-37.922l18.078-18.059h643.422l18.078 18.059v37.922zM198.941 562.396l43.308-63.059v-153.289c0-46.52 37.845-84.365 84.365-84.365h356.844c46.52 0 84.365 37.845 84.365 84.365v155.441l46.249 54.576v15.597h-615.134v-9.269zM859.19 663.070h-320.595v-14.48h352.403v-120.712l-46.249-54.576v-127.248c0-88.94-72.347-161.287-161.287-161.287h-144.863v-18.924h71.095v-76.922h-216.422v76.922h68.404v18.924h-135.058c-88.94 0-161.287 72.347-161.287 161.287v129.404l-43.308 63.040v110.096h339.653v14.48h-309.596l-63.155 63.136v101.616l63.155 63.136h707.114l63.155-63.136v-101.616l-63.155-63.136z"
-            ></path>
-          </svg>
-          <p className={classes.listItem}>Services</p>
-          {ServicesOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={ServicesOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Electronics & Computers" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Education & Classes" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Health & Beauty" />
             </ListItem>
           </List>
         </Collapse>

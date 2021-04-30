@@ -12,6 +12,9 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./styles/UniversalTheme";
 import About from "./components/About";
 import Margin from "./components/Margin";
+import PostCar from "./components/PostCar";
+import PostMobile from "./components/PostMobile";
+import PostElectronics from "./components/PostElectronics";
 
 import {
   getAllProducts,
@@ -43,8 +46,23 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <Route
-            path="/PostAdd"
+            exact
+            path="/Postadd"
             component={() => <Margin component={<PostAdd />} />}
+          />
+
+          <Route
+            path="/Postadd/Car"
+            component={() => <Margin component={<PostCar />} />}
+          />
+          <Route
+            path="/Postadd/Mobile"
+            component={() => <Margin component={<PostMobile />} />}
+          />
+
+          <Route
+            path="/Postadd/Electronics"
+            component={() => <Margin component={<PostElectronics />} />}
           />
           <Route
             path="/Login"

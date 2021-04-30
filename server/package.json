@@ -27,6 +27,7 @@
     "fontsource-roboto": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.18",
+    "multer": "^1.4.2",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "stripe": "^8.143.0"

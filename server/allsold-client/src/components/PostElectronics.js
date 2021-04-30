@@ -18,15 +18,22 @@ import {
 import "../styles/About.css";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import ContactPhoneIcon from "@material-ui/icons/ContactPhone";
+import PostAddIcon from "@material-ui/icons/PostAdd";
 import { theme } from "../styles/UniversalTheme";
 import SpeechRec from "./SpeechRec";
 
 const font = "'Raleway', sans-serif";
 
 function Contact() {
-  const initialState = { name: "", email: "", description: "" };
+  const initialState = {
+    brand: "",
+
+    adTitle: "",
+    description: "",
+    price: "",
+  };
   const [formData, setFormData] = React.useState(initialState);
+  const [file, setFile] = React.useState();
 
   const useStyles = makeStyles(() => ({
     gridStart: {
@@ -44,7 +51,7 @@ function Contact() {
 
     image: {
       backgroundImage:
-        "url(https://images.pexels.com/photos/955081/pexels-photo-955081.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)",
+        "url(https://cdn.pixabay.com/photo/2017/09/13/17/03/technology-2746212_960_720.jpg)",
       backgroundRepeat: "no-repeat",
       backgroundColor:
         theme.palette.type === "light"
@@ -71,10 +78,17 @@ function Contact() {
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    buttonUpload: {
+      margin: theme.spacing(3, 0, 2),
+    },
   }));
   const classes = useStyles();
   const handleChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
+  };
+
+  const publishAd = (event) => {
+    console.log("Image uploaded");
   };
 
   return (
@@ -88,6 +102,7 @@ function Contact() {
           className={classes.content}
           xs={12}
         >
+          <Grid item xs={false} sm={4} md={7} className={classes.image} />
           <Grid
             item
             container
@@ -99,73 +114,63 @@ function Contact() {
           >
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
-                <ContactPhoneIcon />
+                <PostAddIcon />
               </Avatar>
               <Typography variant="h3" component="h1">
-                Contact Us
+                Post Your Ad
               </Typography>
-              <Typography
-                variant="h6"
-                component="p"
-                style={{
-                  fontFamily: font,
-                  fontWeight: "800",
-                  marginTop: "2rem",
-                  marginBottom: "2rem",
-                }}
-              >
-                We value every bit of feedback from our consumers. Please fill
-                up our contact us form and we will get back to you shortly
-              </Typography>
+
               <form className={classes.form} noValidate>
                 <TextField
                   variant="outlined"
                   margin="normal"
                   fullWidth
                   required
-                  id="name"
-                  value={formData.name}
-                  label="Full Name"
-                  name="name"
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  autoComplete="name"
+                  id="brand"
+                  value={formData.brand}
+                  label="Brand"
+                  name="brand"
+                  autoComplete="brand"
                   autoFocus
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <SpeechRec id="name" handleChange={handleChange} />
+                        <SpeechRec id="brand" handleChange={handleChange} />
                       </InputAdornment>
                     ),
                   }}
                 />
+
                 <TextField
                   variant="outlined"
                   margin="normal"
                   fullWidth
                   required
-                  id="email"
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  value={formData.email}
-                  label="Email Address"
-                  name="email"
+                  id="adTitle"
+                  value={formData.adTitle}
+                  label="Ad Title"
+                  name="adTitle"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <SpeechRec id="email" handleChange={handleChange} />
+                        <SpeechRec id="adTitle" handleChange={handleChange} />
                       </InputAdornment>
                     ),
                   }}
                 />
+
                 <TextField
-                  id="description"
-                  label="Enter your message here"
-                  multiline
-                  rows={4}
                   variant="outlined"
+                  margin="normal"
                   fullWidth
                   required
+                  onChange={(e) => handleChange(e.target.name, e.target.value)}
+                  id="description"
                   value={formData.description}
-                  margin="normal"
+                  label="Description"
+                  name="description"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -177,19 +182,61 @@ function Contact() {
                     ),
                   }}
                 />
+
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  required
+                  onChange={(e) => handleChange(e.target.name, e.target.value)}
+                  id="price"
+                  value={formData.price}
+                  label="Price"
+                  name="price"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SpeechRec id="price" handleChange={handleChange} />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+
+                <input
+                  accept="image/*"
+                  className={classes.input}
+                  style={{ display: "none" }}
+                  id="raised-button-file"
+                  multiple
+                  type="file"
+                  onChange={(event) => {
+                    const file = event.target.files[0];
+                    setFile(file);
+                  }}
+                />
+                <label htmlFor="raised-button-file">
+                  <Button
+                    variant="outlined"
+                    component="span"
+                    className={classes.buttonUpload}
+                  >
+                    Upload images
+                  </Button>
+                </label>
+
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   color="primary"
                   className={classes.submit}
+                  onClick={publishAd}
                 >
-                  Send Message
+                  Post Ad
                 </Button>
               </form>
             </div>
           </Grid>
-          <Grid item xs={false} sm={4} md={7} className={classes.image} />
         </Grid>
         <Grid item xs={12}>
           <Footer />
