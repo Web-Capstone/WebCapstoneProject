@@ -44,7 +44,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData, history));
-
     setTimeout(() => {
       setOpen(true);
     }, 850);
@@ -93,7 +92,8 @@ const Login = () => {
           >
             <Grid item xs={12} md={8} style={{ width: "100%" }}>
               <TextField
-                style={{ width: "calc(100% - 24px)" }}
+                // style={{ width: "calc(100% - 24px)" }}
+                style={{ width: "100%" }}
                 className={classes.margin}
                 autoFocus="true"
                 id="email"
@@ -120,7 +120,8 @@ const Login = () => {
             </Grid>
             <Grid item xs={12} md={8} style={{ width: "100%" }}>
               <TextField
-                style={{ width: "calc(100% - 24px)" }}
+                // style={{ width: "calc(100% - 24px)" }}
+                style={{ width: "100%" }}
                 className={classes.margin}
                 label="Password"
                 name="password"

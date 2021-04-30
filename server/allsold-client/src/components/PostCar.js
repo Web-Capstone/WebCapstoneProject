@@ -21,23 +21,29 @@ import Footer from "./Footer";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import { theme } from "../styles/UniversalTheme";
 import SpeechRec from "./SpeechRec";
+import { postCarsAdd, getSingleProduct } from "../actions/index";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 const font = "'Raleway', sans-serif";
 
-function Contact() {
-  const initialState = {
-    brand: "",
-    year: "",
-    fuelType: "",
-    transmission: "",
-    km: "",
-    numberOfOwners: "",
-    adTitle: "",
-    description: "",
-    price: "",
-  };
-  const [formData, setFormData] = React.useState(initialState);
-  const [file, setFile] = React.useState();
+const initialState = {
+  productCarBrand: "",
+  productCarYear: "",
+  productCarFuelType: "",
+  productCarTransmission: "",
+  productCarKm: "",
+  productCarNumberOfOwners: "",
+  prouctTitle: "",
+  productDescription: "",
+  productPrice: "",
+};
+
+const PostCar = () => {
+  const [formData, setFormData] = useState(initialState);
+  const [file, setFile] = useState();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const useStyles = makeStyles(() => ({
     gridStart: {
@@ -45,11 +51,10 @@ function Contact() {
     },
     content: {
       display: "flex",
-      height: "100%",
     },
     contactForm: {
       display: "flex",
-      height: "100vh",
+
       borderBottom: "1px solid rgba(0,0,0,0.3)",
     },
 
@@ -91,8 +96,11 @@ function Contact() {
     setFormData({ ...formData, [id]: value });
   };
 
-  const publishAd = (event) => {
-    console.log("Image uploaded");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postCarsAdd(formData, history));
+    dispatch(getSingleProduct(history, 8));
+    console.log(formData);
   };
 
   return (
@@ -124,7 +132,7 @@ function Contact() {
                 Post Your Ad
               </Typography>
 
-              <form className={classes.form} noValidate>
+              <form className={classes.form} noValidate onSubmit={handleSubmit}>
                 <TextField
                   variant="outlined"
                   margin="normal"
@@ -132,9 +140,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="brand"
-                  value={formData.brand}
+                  value={formData.productCarBrand}
                   label="Brand"
-                  name="brand"
+                  name="productCarBrand"
                   autoComplete="brand"
                   autoFocus
                   InputProps={{
@@ -152,9 +160,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="year"
-                  value={formData.year}
+                  value={formData.productCarYear}
                   label="Year"
-                  name="year"
+                  name="productCarYear"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -171,9 +179,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="fuelType"
-                  value={formData.fuelType}
+                  value={formData.productCarFuelType}
                   label="Fuel type"
-                  name="fuelType"
+                  name="productCarFuelType"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -189,9 +197,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="transmission"
-                  value={formData.transmission}
+                  value={formData.productCarTransmission}
                   label="Transmission"
-                  name="transmission"
+                  name="productCarTransmission"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -211,9 +219,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="km"
-                  value={formData.km}
+                  value={formData.productCarKm}
                   label="km driven"
-                  name="km"
+                  name="productCarKm"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -230,9 +238,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="numberOfOwners"
-                  value={formData.numberOfOwners}
+                  value={formData.productCarNumberOfOwners}
                   label="Number of owners"
-                  name="numberOfOwners"
+                  name="productCarNumberOfOwners"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -252,9 +260,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="adTitle"
-                  value={formData.adTitle}
+                  value={formData.prouctTitle}
                   label="Ad Title"
-                  name="adTitle"
+                  name="prouctTitle"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -271,9 +279,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="description"
-                  value={formData.description}
+                  value={formData.productDescription}
                   label="Description"
-                  name="description"
+                  name="productDescription"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -293,9 +301,9 @@ function Contact() {
                   required
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   id="price"
-                  value={formData.price}
+                  value={formData.productPrice}
                   label="Price"
-                  name="price"
+                  name="productPrice"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -304,7 +312,7 @@ function Contact() {
                     ),
                   }}
                 />
-
+                {/* 
                 <input
                   accept="image/*"
                   className={classes.input}
@@ -325,15 +333,14 @@ function Contact() {
                   >
                     Upload images
                   </Button>
-                </label>
+                </label> */}
 
                 <Button
-                  type="submit"
                   fullWidth
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                  onClick={publishAd}
+                  type="submit"
                 >
                   Post Ad
                 </Button>
@@ -347,6 +354,6 @@ function Contact() {
       </Grid>
     </div>
   );
-}
+};
 
-export default Contact;
+export default PostCar;

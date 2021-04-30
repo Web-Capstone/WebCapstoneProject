@@ -7,6 +7,9 @@ import {
   GET_ALL_PRODUCTS,
   GET_SINGLE_PRODUCT,
   GET_EXTRA_PRODUCTS,
+  POST_CARS_ADD,
+  POST_MOBILES_ADD,
+  POST_ELECTRONICS_ADD,
 } from "./types";
 import * as api from "../API";
 
@@ -83,4 +86,16 @@ export const handleToken = (token) => async (dispatch) => {
 
   dispatch({ type: FETCH_GOOGLE_USER, payload: response.data });
   dispatch({ type: AUTH, payload: response.data });
+};
+
+// Post Add Cars
+export const postCarsAdd = (formData, history) => async (dispatch) => {
+  try {
+    const { data } = await api.getSingleProduct(formData);
+    dispatch({ type: POST_CARS_ADD, data });
+
+    history.push("/");
+  } catch (err) {
+    console.log(err);
+  }
 };
