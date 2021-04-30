@@ -5,7 +5,7 @@ function Margin(props) {
   return (
     <div style={{ display: "flex" }}>
       <Header />
-      <div style={{ marginTop: "68px", width: "100%" }}>{props.component}</div>
+      <div style={{ marginTop: "62px", width: "100%" }}>{props.component}</div>
     </div>
   );
 }

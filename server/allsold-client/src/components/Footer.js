@@ -41,19 +41,46 @@ const useStyles = makeStyles((theme) => ({
 const footers = [
   {
     title: "Company",
-    description: ["About", "Careers", "Contact us", "Locations"],
+    description: [
+      {
+        href: "/about",
+        label: "About",
+      },
+      {
+        href: "/Contact",
+        label: "Careers",
+      },
+      {
+        href: "/Contact",
+        label: "Contact Us",
+      },
+    ],
   },
   {
     title: "Support",
-    description: ["Help Desk", "Accessibility", "Posting policy"],
+    description: [
+      {
+        href: "/contact",
+        label: "Help desk",
+      },
+    ],
   },
   {
     title: "Explore",
-    description: ["Mobile phones", "Cars", "Electronics", "Misc"],
-  },
-  {
-    title: "Legal",
-    description: ["Privacy policy", "Terms of use"],
+    description: [
+      {
+        href: "/postadd/mobile",
+        label: "Mobie Phones",
+      },
+      {
+        href: "/postadd/Cars",
+        label: "Cars",
+      },
+      {
+        href: "/postadd/Electronics",
+        label: "Electronics",
+      },
+    ],
   },
 ];
 
@@ -72,9 +99,13 @@ export default function StickyFooter() {
               </Typography>
               <ul>
                 {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="textSecondary">
-                      {item}
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      variant="subtitle1"
+                      color="textSecondary"
+                    >
+                      {item.label}
                     </Link>
                   </li>
                 ))}
