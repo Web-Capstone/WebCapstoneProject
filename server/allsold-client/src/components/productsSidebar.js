@@ -29,41 +29,6 @@ const ProductsSidebar = () => {
         <h2 className="section_heading">Products</h2>
         <Products_sectionRow />
       </div>
-      <div className="products_section_filter">
-        <FormControl component="fieldset">
-          {/* <FormLabel component="legend">Sort By: </FormLabel> */}
-          <h2>Filter</h2>
-          <div className="section_sortBy">
-            <RadioGroup
-              aria-label="Sort By"
-              name="gender1"
-              value={value}
-              onChange={handleChange}
-              className="sortBy_heading"
-            >
-              <FormControlLabel
-                value="Highest Price"
-                control={<Radio />}
-                label="Highest Price"
-              />
-              <FormControlLabel
-                value="Latest"
-                control={<Radio />}
-                label="Latest"
-              />
-              <FormControlLabel
-                value="Trending"
-                control={<Radio />}
-                label="Trending"
-              />
-            </RadioGroup>
-          </div>
-        </FormControl>
-      </div>
-
-      <div className="products_section_services">
-        <h2>Services</h2>
-      </div>
     </div>
   );
 };

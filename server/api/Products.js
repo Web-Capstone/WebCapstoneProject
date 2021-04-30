@@ -3,6 +3,11 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Products = require("../models/Products");
 mongoose.set("useFindAndModify", false);
+const multer = require("multer");
+const upload = multer();
+const fs = require("fs");
+const { promisify } = require("util");
+const pipeline = promisify(require("stream").pipeline);
 
 // Get all the products
 router.get("/", async (req, res, next) => {
@@ -72,6 +77,9 @@ router.post("/", async (req, res, next) => {
       productCarTransmission,
       productCarKm,
       productCarNumberOfOwners,
+      sellerNumber,
+      sellerName,
+      sellerEmail,
     } = req.body;
 
     const result = await Products.create({
@@ -88,12 +96,30 @@ router.post("/", async (req, res, next) => {
       productCarTransmission,
       productCarKm,
       productCarNumberOfOwners,
+      sellerNumber,
+      sellerName,
+      sellerEmail,
     });
 
     res.status(200).json({ result });
   } catch (error) {
     console.log(error);
   }
+});
+
+router.post("/uploads", upload.single("file"), async function (req, res, next) {
+  const { file } = req;
+
+  console.log(file);
+  const fileName =
+    Math.floor(Math.random() * 1000) + file.detectedFileExtension;
+
+  await pipeline(
+    file.stream,
+    fs.createWriteStream(`${__dirname}/..images/${file}`)
+  );
+
+  res.send("file upoaded as");
 });
 
 module.exports = router;

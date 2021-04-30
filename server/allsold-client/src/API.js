@@ -24,3 +24,7 @@ export const getSingleProduct = (id) => API.get("products/" + id);
 export const getExtraProducts = () => API.get("extraProducts");
 // Route to Post Cars Add
 export const postCarsAdd = (formData) => API.post("products", formData);
+// Route to Post Mobiles Add
+export const postMobilesAdd = (formData) => API.post("products", formData);
+// Route to Post Electronics Data
+export const postElectronicsAdd = (formData) => API.post("products", formData);

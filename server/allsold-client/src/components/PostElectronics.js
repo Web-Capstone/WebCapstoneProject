@@ -21,19 +21,41 @@ import Footer from "./Footer";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import { theme } from "../styles/UniversalTheme";
 import SpeechRec from "./SpeechRec";
+import { postElectronicsAdd } from "../actions";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
 
 const font = "'Raleway', sans-serif";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 function Contact() {
   const initialState = {
-    brand: "",
-
-    adTitle: "",
-    description: "",
-    price: "",
+    productCarBrand: "",
+    prouctTitle: "",
+    productDescription: "",
+    productPrice: "",
+    productName: "Electronics",
+    sellerName: "",
+    sellerEmail: "",
+    sellerNumber: "",
+    productImg: "",
   };
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [formData, setFormData] = React.useState(initialState);
   const [file, setFile] = React.useState();
+  const [open, setOpen] = React.useState(true);
+
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const useStyles = makeStyles(() => ({
     gridStart: {
@@ -47,6 +69,7 @@ function Contact() {
       display: "flex",
       height: "100vh",
       borderBottom: "1px solid rgba(0,0,0,0.3)",
+      marginBottom: "30%",
     },
 
     image: {
@@ -87,161 +110,260 @@ function Contact() {
     setFormData({ ...formData, [id]: value });
   };
 
-  const publishAd = (event) => {
-    console.log("Image uploaded");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postElectronicsAdd(formData, history));
+    console.log(formData);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+    history.push("/login");
+  };
   return (
     <div className={classes.root}>
-      <Grid container xs={12} direction="column" className={classes.gridStart}>
-        <CssBaseline />
+      {user ? (
         <Grid
-          item
           container
-          direction="row"
-          className={classes.content}
           xs={12}
+          direction="column"
+          className={classes.gridStart}
         >
-          <Grid item xs={false} sm={4} md={7} className={classes.image} />
+          <CssBaseline />
           <Grid
             item
             container
-            direction="column"
+            direction="row"
+            className={classes.content}
             xs={12}
-            sm={8}
-            md={5}
-            className={classes.contactForm}
           >
-            <div className={classes.paper}>
-              <Avatar className={classes.avatar}>
-                <PostAddIcon />
-              </Avatar>
-              <Typography variant="h3" component="h1">
-                Post Your Ad
-              </Typography>
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />
+            <Grid
+              item
+              container
+              direction="column"
+              xs={12}
+              sm={8}
+              md={5}
+              className={classes.contactForm}
+            >
+              <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                  <PostAddIcon />
+                </Avatar>
+                <Typography variant="h3" component="h1">
+                  Post Your Ad
+                </Typography>
 
-              <form className={classes.form} noValidate>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  required
-                  onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  id="brand"
-                  value={formData.brand}
-                  label="Brand"
-                  name="brand"
-                  autoComplete="brand"
-                  autoFocus
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SpeechRec id="brand" handleChange={handleChange} />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  required
-                  onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  id="adTitle"
-                  value={formData.adTitle}
-                  label="Ad Title"
-                  name="adTitle"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SpeechRec id="adTitle" handleChange={handleChange} />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  required
-                  onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  id="description"
-                  value={formData.description}
-                  label="Description"
-                  name="description"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SpeechRec
-                          id="description"
-                          handleChange={handleChange}
-                        />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  required
-                  onChange={(e) => handleChange(e.target.name, e.target.value)}
-                  id="price"
-                  value={formData.price}
-                  label="Price"
-                  name="price"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SpeechRec id="price" handleChange={handleChange} />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-
-                <input
-                  accept="image/*"
-                  className={classes.input}
-                  style={{ display: "none" }}
-                  id="raised-button-file"
-                  multiple
-                  type="file"
-                  onChange={(event) => {
-                    const file = event.target.files[0];
-                    setFile(file);
-                  }}
-                />
-                <label htmlFor="raised-button-file">
-                  <Button
-                    variant="outlined"
-                    component="span"
-                    className={classes.buttonUpload}
-                  >
-                    Upload images
-                  </Button>
-                </label>
-
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  onClick={publishAd}
+                <form
+                  className={classes.form}
+                  noValidate
+                  onSubmit={handleSubmit}
                 >
-                  Post Ad
-                </Button>
-              </form>
-            </div>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="brand"
+                    value={formData.productCarBrand}
+                    label="Brand"
+                    name="productCarBrand"
+                    autoComplete="brand"
+                    autoFocus
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec id="brand" handleChange={handleChange} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="adTitle"
+                    value={formData.prouctTitle}
+                    label="Ad Title"
+                    name="prouctTitle"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec id="adTitle" handleChange={handleChange} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="description"
+                    value={formData.productDescription}
+                    label="Description"
+                    name="productDescription"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec
+                            id="description"
+                            handleChange={handleChange}
+                          />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="price"
+                    value={formData.productPrice}
+                    label="Price"
+                    name="productPrice"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec id="price" handleChange={handleChange} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="price"
+                    value={formData.sellerNumber}
+                    label="Mobile Number"
+                    name="sellerNumber"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec id="price" handleChange={handleChange} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="price"
+                    value={formData.sellerName}
+                    label="First Name"
+                    name="sellerName"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec id="price" handleChange={handleChange} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="price"
+                    value={formData.sellerEmail}
+                    label="Email"
+                    name="sellerEmail"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SpeechRec id="price" handleChange={handleChange} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    required
+                    onChange={(e) =>
+                      handleChange(e.target.name, e.target.value)
+                    }
+                    id="price"
+                    value={formData.productImg}
+                    label="Image URL"
+                    name="productImg"
+                  />
+
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                  >
+                    Post Ad
+                  </Button>
+                </form>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Footer />
-        </Grid>
-      </Grid>
+      ) : (
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title"></DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              <h1>Login To Continue</h1>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Login
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
     </div>
   );
 }

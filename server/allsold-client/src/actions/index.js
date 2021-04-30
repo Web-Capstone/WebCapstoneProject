@@ -71,6 +71,39 @@ export const getSingleProduct = (history, id) => async (dispatch) => {
   }
 };
 
+// Post Add Cars
+export const postCarsAdd = (formData, history) => async (dispatch) => {
+  try {
+    const { data } = await api.postCarsAdd(formData);
+    dispatch({ type: POST_CARS_ADD, data });
+    history.push("/");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//Post Add Mobiles
+export const postMobilesAdd = (formData, history) => async (dispatch) => {
+  try {
+    const { data } = await api.postMobilesAdd(formData);
+    dispatch({ type: POST_MOBILES_ADD, data });
+    history.push("/");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//Post Add Electronics
+export const postElectronicsAdd = (formData, history) => async (dispatch) => {
+  try {
+    const { data } = await api.postElectronicsAdd(formData);
+    dispatch({ type: POST_ELECTRONICS_ADD, data });
+    history.push("/");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // Get extra Products
 export const getExtraProducts = () => async (dispatch) => {
   try {
@@ -83,19 +116,6 @@ export const getExtraProducts = () => async (dispatch) => {
 
 export const handleToken = (token) => async (dispatch) => {
   const response = await axios.post("/api/stripe", token);
-
   dispatch({ type: FETCH_GOOGLE_USER, payload: response.data });
   dispatch({ type: AUTH, payload: response.data });
-};
-
-// Post Add Cars
-export const postCarsAdd = (formData, history) => async (dispatch) => {
-  try {
-    const { data } = await api.getSingleProduct(formData);
-    dispatch({ type: POST_CARS_ADD, data });
-
-    history.push("/");
-  } catch (err) {
-    console.log(err);
-  }
 };

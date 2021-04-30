@@ -69,6 +69,7 @@
 
 .related_product_cards {
   display: flex;
+  margin-left: 70px;
   /* height: 300px;
   width: 400px; */
 }

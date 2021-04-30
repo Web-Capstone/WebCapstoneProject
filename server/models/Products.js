@@ -31,6 +31,9 @@ const ProductSchema = new Schema({
   productCarTransmission: String,
   productCarKm: Number,
   productCarNumberOfOwners: Number,
+  sellerNumber: Number,
+  sellerName: String,
+  sellerEmail: String,
 });
 
 const Products = mongoose.model("products", ProductSchema); // model gives us methods like find,create

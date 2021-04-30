@@ -14,6 +14,12 @@ export default function (state = { data: null }, action) {
     case GET_SINGLE_PRODUCT:
       return { ...state, Singledata: action?.data };
 
+    case POST_MOBILES_ADD:
+      return { ...state, postMobilesdata: action.data };
+
+    case POST_ELECTRONICS_ADD:
+      return { ...state, postElectronicsdata: action.data };
+
     case POST_CARS_ADD:
       return { ...state, postCarsdata: action?.data };
 

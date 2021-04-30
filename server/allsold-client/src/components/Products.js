@@ -69,7 +69,7 @@ function Products() {
           )}
         </div>
 
-        <h1>Related Ads</h1>
+        {/* <h1>Related Ads</h1>
         <div className="related_product_cards">
           {console.log("Extra Products ", getExtraProducts)}
 
@@ -84,23 +84,9 @@ function Products() {
                   productPrice={data.productPrice}
                   productName={data.productName}
                 />
-                // <RelatedProductCards
-                //   key={edata._id}
-                //   productId={edata._id}
-                //   productDescription={edata.productDescription}
-                //   productTitle={edata.prouctTitle}
-                //   productImg={edata.productImg}
-                //   productPrice={edata.productPrice}
-                //   productName={edata.productName}
-                // />
-
-                // <div key={edata._id}>
-                //   <h1>hhhh</h1>
-                //   <img src={edata.productImg} />
-                // </div>
               ))
             : null}
-        </div>
+        </div> */}
       </div>
     </div>
   );
