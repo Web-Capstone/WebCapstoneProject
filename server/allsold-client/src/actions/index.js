@@ -42,8 +42,8 @@ export const registerUser = (formData, history) => async (dispatch) => {
     dispatch({ type: AUTH, data });
     history.push("/");
     //window.location.reload();
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    dispatch({ type: AUTH_FAIL, err });
   }
 };
 

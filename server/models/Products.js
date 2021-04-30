@@ -24,6 +24,7 @@ const ProductSchema = new Schema({
   },
   productPrice: requiredNumber,
   productDetails: String,
+  productCategory: String,
 });
 
 const Products = mongoose.model("products", ProductSchema); // model gives us methods like find,create

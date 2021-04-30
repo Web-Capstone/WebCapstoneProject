@@ -63,9 +63,6 @@ const ProductsSidebar = () => {
 
       <div className="products_section_services">
         <h2>Services</h2>
-        <Products_sectionRow Icon={PhoneAndroidIcon} title="Car Wash" />
-        <Products_sectionRow Icon={FastfoodIcon} title="Home CLeaning" />
-        <Products_sectionRow Icon={PowerIcon} title="Catering" />
       </div>
     </div>
   );

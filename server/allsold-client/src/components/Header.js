@@ -94,15 +94,19 @@ function Header(props) {
     },
     {
       text: "All Products",
+      link: "/products",
     },
     {
       text: "Post Add",
+      link: "/PostAdd",
     },
     {
       text: "Contact us",
+      link: "/contact",
     },
     {
       text: "About Us",
+      link: "/about",
     },
   ];
 
@@ -142,11 +146,17 @@ function Header(props) {
         <ClickAwayListener onClickAway={handleClickAway}>
           <List className={classes.drawer}>
             {itemList.map((item, index) => {
-              const { text } = item;
+              const { text, link } = item;
               return (
-                <ListItem button key={text}>
-                  <ListItemText primary={text} />
-                </ListItem>
+                <Link
+                  to={link}
+                  underline="none"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <ListItem button key={text}>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                </Link>
               );
             })}
           </List>

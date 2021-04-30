@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import "../styles/About.css";
 import MayankImage from "../images/mayank.jpeg";
+import DivImage from "../images/divImage.jpeg";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
@@ -241,7 +242,7 @@ function About() {
                     component="img"
                     alt="Divyaraj"
                     height="340"
-                    image="https://images.unsplash.com/photo-1475874619827-b5f0310b6e6f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlbmd1aW58ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    image={DivImage}
                     title="Divyaraj"
                   />
                   <CardContent className={classes.cardContent}>

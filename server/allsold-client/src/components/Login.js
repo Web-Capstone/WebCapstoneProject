@@ -26,10 +26,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     maxHeight: "100vh",
   },
-
-  grid: {
-    paddingTop: "70px",
-  },
 }));
 
 function Alert(props) {
@@ -80,11 +76,7 @@ const Login = () => {
   const LoginError = useSelector((state) => state.authReducer.authData);
 
   return (
-<<<<<<< HEAD
-    <Grid container className={classes.grid}>
-=======
     <Grid container style={{ marginTop: "68px" }}>
->>>>>>> a993a633133cc1c4a4b96c190fc64f04fac16611
       <Grid item xs={12}>
         <form
           className="registerForm"

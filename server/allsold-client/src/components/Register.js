@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   regButton: {
     backgroundColor: "black",
+    marginLeft: "270px",
     "&:hover": { backgroundColor: "rgba(0,0,0,0.8)", color: "white" },
   },
 }));
@@ -57,6 +58,7 @@ const Login = () => {
           autoFocus="true"
           id="email"
           name="email"
+          type="email"
           label="email"
           variant="outlined"
           required="true"
@@ -79,7 +81,7 @@ const Login = () => {
         <TextField
           className={classes.margin}
           // id="input-with-icon-textfield outlined"
-          id="firstname"
+          id="firstName"
           label="firstName"
           name="firstName"
           variant="outlined"
@@ -126,14 +128,14 @@ const Login = () => {
 
         <TextField
           className={classes.margin}
-          id="input-with-icon-textfield outlined"
+          id="password"
           label="password"
           name="password"
           type="password"
           variant="outlined"
           color="#440a67"
           required="true"
-          onChange={handleChange}
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

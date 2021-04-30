@@ -8,6 +8,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { makeStyles } from "@material-ui/core/styles";
 //Components
 import RelatedProductCards from "./RelatedProductCards";
+import ProductCard from "./ProductCard";
 
 import "../styles/productDetails.css";
 
@@ -23,9 +24,10 @@ const ProductDetails = () => {
   const getSingleProduct = useSelector((state) => state.productsReducer);
   const { Singledata: data } = getSingleProduct;
   const getAllProducts = useSelector((state) => state.productsReducer.data);
+  const getRelatedProducts = getAllProducts?.filter(
+    (c) => c.productCategory === "recommended"
+  );
   const classes = useStyles();
-  const getExtraProducts = useSelector((state) => state.productsReducer);
-  const { ExtraProductsdata } = getExtraProducts;
 
   return (
     <>
@@ -53,9 +55,9 @@ const ProductDetails = () => {
           </div>
           <div className="related_ads">
             <h1>Related ads</h1>
-            {getAllProducts
-              ? getAllProducts.map((Edata) => (
-                  <RelatedProductCards
+            {getRelatedProducts
+              ? getRelatedProducts.map((Edata) => (
+                  <ProductCard
                     key={Edata._id}
                     productId={Edata._id}
                     productDescription={Edata.productDescription}

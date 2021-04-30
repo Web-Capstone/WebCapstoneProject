@@ -33,7 +33,12 @@ function Products() {
   // Getting data from redux store
   const getExtraProducts = useSelector((state) => state.relatedAds.data);
   const getAllProducts = useSelector((state) => state.productsReducer.data);
-
+  const getLatestProducts = getAllProducts?.filter(
+    (c) => c.productCategory !== "recommended"
+  );
+  const getRelatedProducts = getAllProducts?.filter(
+    (c) => c.productCategory === "recommended"
+  );
   return (
     <div className="products">
       <ProductsSidebar />
@@ -42,8 +47,8 @@ function Products() {
         <h1>Latest Ads</h1>
         <div className="product_cards">
           {console.log("All Products", getAllProducts)}
-          {getAllProducts ? (
-            getAllProducts.map((data) => (
+          {getLatestProducts ? (
+            getLatestProducts.map((data) => (
               <ProductCard
                 key={data._id}
                 productId={data._id}
@@ -68,9 +73,9 @@ function Products() {
         <div className="related_product_cards">
           {console.log("Extra Products ", getExtraProducts)}
 
-          {getExtraProducts
-            ? getExtraProducts.map((data) => (
-                <RelatedProductCards
+          {getRelatedProducts
+            ? getRelatedProducts.map((data) => (
+                <ProductCard
                   key={data._id}
                   productId={data._id}
                   productDescription={data.productDescription}

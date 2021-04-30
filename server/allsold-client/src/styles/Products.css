@@ -9,7 +9,6 @@
 
 .products_section {
   flex: 0.15;
-  padding-top: 15px;
   height: 100vh;
   padding-right: 25px;
   box-shadow: 5px 0 5px -2px black;
@@ -20,16 +19,15 @@
 .products_section_services,
 .products_section_filter {
   margin-left: 20px;
-  margin-top: 20px;
   border-bottom: 3px solid gray;
 }
 
 .products_section_categories {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 .products_section_filter {
-  margin-top: 25px;
+  margin-top: 5px;
   padding-bottom: 20px;
 }
 
@@ -53,7 +51,7 @@
 } */
 
 .products_main {
-  padding-left: 14%;
+  padding-left: 12%;
   flex: 1;
   max-width: 100%;
   margin-bottom: 60px;

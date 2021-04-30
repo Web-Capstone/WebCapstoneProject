@@ -19,11 +19,8 @@ import StarIcon from "@material-ui/icons/StarBorder";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Footer from "./Footer";
-<<<<<<< HEAD
-
-=======
 import Billing from "./Billing";
->>>>>>> a993a633133cc1c4a4b96c190fc64f04fac16611
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -134,7 +131,7 @@ const cCards = [
       "https://images.pexels.com/photos/1294886/pexels-photo-1294886.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
-    title: "Jeep Wrangler",
+    title: "Jeep Wranglerr",
     description: "Odometer - 51344, one owner, three years old",
     price: "$34121",
     image:

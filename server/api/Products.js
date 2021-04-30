@@ -28,41 +28,60 @@ router.get("/:id", async (req, res, next) => {
 //Update a Product
 router.put("/:id", async (req, res, next) => {
   const id = req.params.id;
+
+  var newObject = {
+    productName: req.body.productName,
+    prouctTitle: req.body.prouctTitle,
+    productDescription: req.body.productDescription,
+    productImg: req.body.productImg,
+    productRating: req.body.productRating,
+    productPrice: req.body.productPrice,
+    productDetails: req.body.productDetails,
+    productCategory: req.body.productCategory,
+  };
   try {
-    const updateProduct = await Products.findByIdAndUpdate(id);
-    res.json(updateProduct);
+    const updateProduct = await Products.findByIdAndUpdate(
+      id,
+      newObject,
+      function (err) {
+        if (err) {
+          res.send(err);
+        }
+        res.json({ message: "Done" });
+      }
+    );
   } catch (error) {
     console.log(error);
   }
 });
 
 // Post Add
-router.post("/", async (req, res, next) => {
-  try {
-    const {
-      productName,
-      prouctTitle,
-      productDescription,
-      productImg,
-      productRating,
-      productPrice,
-      productDetails,
-    } = req.body;
+// router.post("/", async (req, res, next) => {
+//   try {
+//     const {
+//       productName,
+//       prouctTitle,
+//       productDescription,
+//       productImg,
+//       productRating,
+//       productPrice,
+//       productDetails,
+//     } = req.body;
 
-    const result = await Products.create({
-      productName,
-      prouctTitle,
-      productDescription,
-      productImg,
-      productRating,
-      productPrice,
-      productDetails,
-    });
+//     const result = await Products.create({
+//       productName,
+//       prouctTitle,
+//       productDescription,
+//       productImg,
+//       productRating,
+//       productPrice,
+//       productDetails,
+//     });
 
-    res.status(200).json({ result });
-  } catch (error) {
-    console.log(error);
-  }
-});
+//     res.status(200).json({ result });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 module.exports = router;

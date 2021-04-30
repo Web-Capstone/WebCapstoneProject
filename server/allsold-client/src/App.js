@@ -61,9 +61,20 @@ function App() {
             component={() => <Margin component={<Products />} />}
           />
 
-          <Route path="/product/cars" component={Cars} />
-          <Route path="/product/mobiles" component={Mobiles} />
-          <Route path="/product/electronics" component={Electronics} />
+          <Route
+            path="/product/cars"
+            component={() => <Margin component={<Cars />} />}
+          />
+
+          <Route
+            path="/product/mobiles"
+            component={() => <Margin component={<Mobiles />} />}
+          />
+
+          <Route
+            path="/product/electronics"
+            component={() => <Margin component={<Electronics />} />}
+          />
 
           <Route
             path="/productDetails/:id"
