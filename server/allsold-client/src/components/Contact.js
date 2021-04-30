@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Filter from "bad-words";
 import {
   Grid,
   Button,
@@ -23,58 +24,65 @@ import { theme } from "../styles/UniversalTheme";
 import SpeechRec from "./SpeechRec";
 
 const font = "'Raleway', sans-serif";
+const useStyles = makeStyles(() => ({
+  gridStart: {
+    display: "flex",
+  },
+  content: {
+    display: "flex",
+    height: "100%",
+  },
+  contactForm: {
+    display: "flex",
+    height: "100vh",
+    borderBottom: "1px solid rgba(0,0,0,0.3)",
+  },
+
+  image: {
+    backgroundImage:
+      "url(https://images.pexels.com/photos/955081/pexels-photo-955081.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "100vh",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: "red",
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 function Contact() {
   const initialState = { name: "", email: "", description: "" };
   const [formData, setFormData] = React.useState(initialState);
 
-  const useStyles = makeStyles(() => ({
-    gridStart: {
-      display: "flex",
-    },
-    content: {
-      display: "flex",
-      height: "100%",
-    },
-    contactForm: {
-      display: "flex",
-      height: "100vh",
-      borderBottom: "1px solid rgba(0,0,0,0.3)",
-    },
-
-    image: {
-      backgroundImage:
-        "url(https://images.pexels.com/photos/955081/pexels-photo-955081.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)",
-      backgroundRepeat: "no-repeat",
-      backgroundColor:
-        theme.palette.type === "light"
-          ? theme.palette.grey[50]
-          : theme.palette.grey[900],
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      height: "100vh",
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: "red",
-    },
-    paper: {
-      margin: theme.spacing(8, 4),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    form: {
-      width: "100%", // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
   const classes = useStyles();
+  const filter = new Filter();
   const handleChange = (id, value) => {
-    setFormData({ ...formData, [id]: value });
+    let cleanString;
+
+    if (value) {
+      cleanString = filter.clean(value);
+    }
+    console.log(id, value, cleanString);
+    setFormData({ ...formData, [id]: cleanString });
   };
 
   return (
@@ -163,7 +171,9 @@ function Contact() {
                   rows={4}
                   variant="outlined"
                   fullWidth
+                  name="description"
                   required
+                  onChange={(e) => handleChange(e.target.name, e.target.value)}
                   value={formData.description}
                   margin="normal"
                   InputProps={{
